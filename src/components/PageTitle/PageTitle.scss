@@ -1,0 +1,32 @@
+@import "../../sass-utils/globals";
+
+.PageTitle {
+  @include full-width;
+
+  padding: 4rem 1rem;
+  margin-top: $header-height;
+  text-align: center;
+  background-color: $grey-light;
+  color: $black;
+
+  @include breakpoint($bp-768) {
+    margin-top: 0;
+  }
+
+  > * {
+    margin-left: auto;
+    margin-right: auto;
+
+    + * {
+      margin-top: 1.5rem;
+    }
+  }
+
+  h1 {
+    font-size: $fs-large;
+
+    @include breakpoint($bp-540) {
+      font-size: $fs-extra-large;
+    }
+  }
+}

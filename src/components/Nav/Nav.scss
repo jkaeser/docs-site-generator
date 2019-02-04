@@ -1,0 +1,140 @@
+@import "../../sass-utils/globals";
+
+.hidden {
+  @include visually-hidden;
+}
+
+.menu-is-open {
+  overflow: hidden;
+}
+
+.Nav {
+  &__toggle {
+    cursor: pointer;
+
+    @include breakpoint($bp-768) {
+      display: none;
+    }
+
+    &.is-active {
+      .line:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+
+      .line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .line:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+    }
+
+    .line {
+      width: 30px;
+      height: 3px;
+      background-color: $black;
+      display: block;
+      margin: 6px auto;
+      transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
+    }
+  }
+
+  &__wrapper {
+    position: fixed;
+    overflow: hidden;
+    top: $header-height;
+    left: 0;
+    width: 100vw;
+    transition: all .25s ease-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint($bp-768) {
+      position: static;
+      transform: none;
+      left: initial;
+      top: initial;
+      width: initial;
+      margin-left: 1rem;
+    }
+
+    &.closed {
+      transform: translateX(110vw);
+
+      @include breakpoint($bp-768) {
+        transform: none;
+      }
+    }
+  }
+
+  &__overlay {
+    height: 100vh;
+    background-color: $black;
+    opacity: .7;
+
+    @include breakpoint($bp-768) {
+      display: none;
+    }
+  }
+
+  &__list {
+    font-family: $f-secondary;
+    letter-spacing: 3px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    background-color: $bluegreen-darker;
+    padding: 3rem;
+
+    @include breakpoint($bp-768) {
+      flex-direction: row;
+      padding: 0;
+      background-color: transparent;
+    }
+  }
+
+  &__item {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    color: $white;
+    font-size: 1.25rem;
+    text-align: right;
+    border-bottom: 1px solid transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $bluegreen-light;
+    }
+
+    + .Nav__item {
+      margin-top: 3rem;
+    }
+
+    @include breakpoint($bp-768) {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: $grey-dark;
+      text-align: center;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $black;
+      }
+
+      + .Nav__item {
+        margin-left: 2.5rem;
+        margin-top: 0;
+      }
+    }
+  }
+
+  a:focus {
+    outline-width: 1px;
+    outline-offset: -1px;
+  }
+}

@@ -1,0 +1,63 @@
+@import "../../sass-utils/globals";
+
+.LandingMenu {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @include breakpoint($bp-768) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include breakpoint($bp-1024) {
+    gap: 1.75rem;
+  }
+
+  &__item {
+    a {
+      color: $white;
+      min-height: 200px;
+      padding: 1rem;
+      font-size: $fs-medium;
+      font-weight: 300;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $c-1-translucent;
+      margin: 0 auto;
+      border-bottom: none;
+      border-radius: 2px;
+      transition: all $transition-timing $transition-curve;
+      text-decoration-color: $c-5;
+
+      &:hover {
+        background-color: $c-1;
+        text-decoration: underline;
+        text-decoration-color: $c-5;
+      }
+    }
+
+    &--first {
+      + .DocsLanding__menu-item--first {
+        margin-top: 2.25rem;
+      }
+    }
+
+    &--second {
+      margin-top: .25rem;
+
+      a {
+        font-weight: 500;
+      }
+    }
+
+    &--third {
+      font-size: $fs-base;
+
+      a {
+        font-weight: 300;
+      }
+    }
+  }
+}

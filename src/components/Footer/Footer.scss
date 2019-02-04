@@ -1,0 +1,23 @@
+@import "../../sass-utils/globals";
+
+#Footer {
+  font-size: 0.8rem;
+  font-family: $f-secondary;
+  background-color: $c-1;
+  padding: 1rem 2rem;
+  color: $white;
+
+  @include breakpoint($bp-768) {
+    font-size: 1rem;
+  }
+}
+
+.Footer {
+  &__wrapper {
+    @include mw($bp-1280);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

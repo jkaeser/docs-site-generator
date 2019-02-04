@@ -1,0 +1,59 @@
+backend:
+  name: github
+  repo: zivtech/chainalysis
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+publish_mode: editorial_workflow
+
+collections:
+  - name: "menu"
+    label: "Menu"
+    folder: "src/menus"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Menu ID", name: "uid", widget: "string", help: "Create a unique identifier for this menu. This is used to reference the menu in code."}
+      - {label: "Title", name: "title", widget: "string"}
+      - label: "Level 1 Items"
+        name: "items_1"
+        widget: "list"
+        fields:
+          - {label: "Label", name: "label", widget: "string"}
+          - {label: "Path", name: "path", widget: "string", default: "/", help: "Enter a path relative to the site root, e.g. \"/path/to/page\"."}
+          - label: "Level 2 Items"
+            name: "items_2"
+            widget: "list"
+            fields:
+              - {label: "Label", name: "label", widget: "string"}
+              - {label: "Path", name: "path", widget: "string"}
+              - label: "Level 3 Items"
+                name: "items_3"
+                widget: "list"
+                fields:
+                  - {label: "Label", name: "label", widget: "string"}
+                  - {label: "Path", name: "path", widget: "string"}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/docs-landing.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "home"}
+          - {label: "Path", name: "path", widget: "hidden", default: "/"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+
+  - name: "docs"
+    label: "Docs"
+    folder: "src/pages/docs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "docs"}
+      - {label: "Path", name: "path", widget: "string", default: "/docs/", hint: "Add a relative path starting with \"/docs/\"."}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}

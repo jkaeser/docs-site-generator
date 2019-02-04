@@ -1,0 +1,122 @@
+@import "../../sass-utils/globals";
+
+.Docs {
+  background-color: $white;
+  height: 100%;
+
+  @include breakpoint($bp-1024) {
+    padding-bottom: $desktop-padding;
+  }
+
+  &__title {
+    position: relative;
+    color: $black;
+  }
+
+  &__page-title {
+    font-weight: 700;
+  }
+
+  &__wrapper {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'b'
+      'c'
+      's'
+    ;
+
+    @include breakpoint($bp-1024) {
+      padding: 0 1rem;
+      grid-template-columns: 1fr 2.5fr;
+      grid-template-areas:
+        'b b'
+        's c'
+      ;
+    }
+  }
+
+  &__breadcrumb {
+    grid-area: b;
+    padding: 2rem 1rem;
+
+    @include breakpoint($bp-1024) {
+      padding: 2rem 3rem;
+    }
+  }
+
+  &__sidebar {
+    grid-area: s;
+  }
+
+  &__content {
+    grid-area: c;
+    font-size: $fs-smaller;
+    margin: 0 1rem;
+    color: $c-2;
+
+    @include breakpoint($bp-768) {
+      margin: 0 3rem;
+    }
+
+    @include breakpoint($bp-1024) {
+      margin: 0 0 0 4.275rem;
+    }
+  }
+
+  &__content-body {
+    a {
+      border-bottom: 1px solid $c-1;
+    }
+
+    img {
+      border: 2px solid $grey;
+      margin: 3.5rem 0;
+    }
+
+    strong,
+    em {
+      color: $c-1;
+    }
+
+    pre {
+      background-color: $grey-light;
+      font-size: $fs-base;
+      line-height: 1.2;
+      padding: 1rem;
+    }
+
+    hr {
+      margin: 3.5rem 0;
+    }
+
+    blockquote {
+      position: relative;
+
+      &::before {
+        // @include quotation-mark('../../img/leftquote.svg', 'right');
+
+        background-position: top;
+        height: 45px;
+        position: absolute;
+        left: -30px;
+
+        @include breakpoint($bp-768) {
+          top: -15px;
+          left: -55px;
+        }
+      }
+    }
+  }
+
+  &__content-accordions {
+    margin-bottom: 2rem;
+
+    @include breakpoint($bp-1024) {
+      margin-bottom: 0;
+    }
+  }
+}

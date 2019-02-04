@@ -1,0 +1,52 @@
+@import "../../sass-utils/globals";
+
+#Header {
+  position: fixed;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid $grey-light;
+  background-color: #2F3A45;
+  height: $header-height;
+
+  @include breakpoint($bp-768) {
+    position: static;
+    z-index: 0;
+    height: auto;
+  }
+}
+
+.Header {
+  &__wrapper {
+    @include mw($bp-1280);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 125px;
+
+    @include breakpoint($bp-768) {
+      width: 170px;
+    }
+
+    a {
+      display: block;
+      transition: all $transition-timing $transition-curve;
+
+      &:focus {
+        box-shadow: 2px 2px 4px 1px $c-5;
+      }
+
+      &:hover {
+        border-bottom: none;
+      }
+    }
+  }
+
+  figure {
+    margin: 0;
+  }
+}

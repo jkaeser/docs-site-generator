@@ -1,0 +1,34 @@
+@import "../../sass-utils/globals";
+
+.Home {
+  &__title {
+    position: relative;
+  }
+
+  &__title-wrapper {
+    @include mw($bp-768);
+
+    text-transform: none;
+    margin-top: 1rem;
+  }
+
+  &__subtitle {
+    font-size: $fs-medium;
+  }
+
+  &__content-wrapper {
+    @include section;
+
+    background-color: $white;
+    height: 100%;
+  }
+
+  &__content {
+    @include mw($bp-1280);
+  }
+
+  &__search-wrapper {
+    max-width: 450px;
+    margin: 2rem auto 4rem;
+  }
+}

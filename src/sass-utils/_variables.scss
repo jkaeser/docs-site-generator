@@ -1,0 +1,47 @@
+// Colors
+$c-0: #222639;
+$c-1: #2F3A45;
+$c-1-translucent: rgba(47, 58, 69, 0.8);
+$c-2: #617688;
+$c-3: #99A6B2;
+$c-4: #40C2EA;
+$c-5: #FD9D30;
+
+$white: #fff;
+$grey-light: #eeeded;
+$grey: #cacaca;
+$grey-mid: $c-3;
+$grey-dark: #8a8a8a;
+$black: #252525;
+
+$red: red;
+
+$ui-border: #979797;
+
+// Fonts
+$f-primary: 'Raleway', sans-serif;
+$f-secondary: 'Roboto Condensed', sans-serif;
+
+$fs-tiny: .85rem;
+$fs-base: 1rem;
+$fs-smaller: 1.125rem;
+$fs-small: 1.25rem;
+$fs-medium: 1.5rem;
+$fs-large: 1.75rem;
+$fs-extra-large: 2.25rem;
+$fs-huge: 3rem;
+
+// Breakpoints
+$bp-540: 33.75rem;
+$bp-768: 48rem;
+$bp-1024: 64rem;
+$bp-1280: 80rem;
+
+// Layout
+$desktop-padding: 4rem;
+$mobile-padding: 2rem;
+$header-height: 72px;
+
+// Animations
+$transition-curve: cubic-bezier(0.19, 1, 0.22, 1);
+$transition-timing: 1s;

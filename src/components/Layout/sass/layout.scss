@@ -1,0 +1,79 @@
+@import "../../../sass-utils/globals";
+
+head,
+script {
+  display: none !important;
+}
+
+*:focus {
+  outline: 4px solid $c-5;
+}
+
+*:active {
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// Ensure all pages extend to the bottom of the viewport.
+#___gatsby > div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  #content-wrapper {
+    flex-basis: 100%;
+
+    #content {
+      margin-left: auto;
+      margin-right: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      background-color: $white;
+      color: $black;
+
+      #main-content {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+.skip-link {
+  @include visually-hidden;
+
+  &:focus {
+    @include visually-hidden-off;
+
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparentize($white, .25);
+    text-align: center;
+    padding: 1rem;
+    font-size: $fs-medium;
+  }
+}

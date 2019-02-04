@@ -1,0 +1,34 @@
+@import "../../sass-utils/globals";
+
+.Breadcrumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Crumb {
+  font-family: $f-secondary;
+  font-size: $fs-tiny;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  color: $grey-dark;
+
+  a {
+    font-weight: 400;
+  }
+
+  &::after {
+    content: '\00BB\00a0';
+    display: inline-block;
+    margin-left: .5rem;
+  }
+
+  &:last-of-type::after {
+    content: '';
+  }
+
+  + .Crumb {
+    margin-left: .25rem;
+  }
+}
