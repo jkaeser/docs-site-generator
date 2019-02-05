@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import Helmet from 'react-helmet'
-import NestedMenu from '../../components/NestedMenu'
+import Menu from '../../components/Menu'
 import DocsSearch from '../../components/DocsSearch';
 import Breadcrumbs from '../../components/Breadcrumbs'
 import './Docs.scss'
@@ -34,7 +34,6 @@ export default class DocsPage extends React.Component {
 
   render() {
     const { frontmatter, html: body } = this.props.data.pageMarkdown
-    const { frontmatter: menu } = this.props.data.file.childMarkdownRemark
     const description = this.state.description
 
     return (
@@ -62,7 +61,7 @@ export default class DocsPage extends React.Component {
               {
                 <DocsSearch />
               }
-              <NestedMenu data={menu} />
+              <Menu />
             </aside>
           </div>
         </div>
@@ -82,6 +81,5 @@ export const docsPageQuery = graphql`
       }
       html
     }
-    ...docsMenu
   }
 `

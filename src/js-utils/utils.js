@@ -29,7 +29,6 @@ export function stripSlashes(path) {
   }
   if (path.charAt(0) === '/') {
     path = path.slice(1, path.length)
-    // console.log(slash);
   }
   return path
 }

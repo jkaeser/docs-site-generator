@@ -83,3 +83,19 @@ export const docsMenuQuery = graphql`
     }
   }
 `
+
+export const dynamicMenuQuery = graphql`
+  fragment dynamicMenuQuery on Query {
+    allMarkdownRemark(filter:{ frontmatter:{ templateKey:{ eq: "docs"} } } ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
+          }
+        }
+      }
+    }
+  }
+`

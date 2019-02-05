@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import { MENU_ITEM_SHAPE, MENU_DATA_SHAPE } from '../NestedMenu'
-import classnames from 'classnames'
-import './LandingMenu.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import { MENU_ITEM_SHAPE } from '../NestedMenu';
+import classnames from 'classnames';
+import './LandingMenu.scss';
 
 export class LandingMenuItem extends React.Component {
   static propTypes = {
@@ -30,23 +30,21 @@ export class LandingMenuItem extends React.Component {
 
 export class LandingMenu extends React.Component {
   static propTypes = {
-    data: PropTypes.shape(MENU_DATA_SHAPE),
     pathPrefix: PropTypes.string,
     topLevelPath: PropTypes.string,
   }
 
   static defaultProps = {
-    data: {},
     pathPrefix: '',
     topLevelPath: null,
   }
 
   pathPrefix = `/${this.props.pathPrefix}`
 
-  renderFullTree = () => {
+  renderFullTree = (data) => {
     return (
       <div className="LandingMenu">
-        {this.props.data.items_1.map(item_1 => (
+        {data.items_1.map(item_1 => (
           <LandingMenuItem
             key={item_1.path}
             prefix={this.pathPrefix}
@@ -59,10 +57,10 @@ export class LandingMenu extends React.Component {
     )
   }
 
-  renderPartialTree = () => {
+  renderPartialTree = (data) => {
     // Loop through first level of data.
-    for (var first in this.props.data) {
-      let first_level = this.props.data[first]
+    for (var first in data) {
+      let first_level = data[first]
 
       // Loop through second level, where path data is stored.
       for (var second in first_level) {
@@ -105,12 +103,21 @@ export class LandingMenu extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.topLevelPath == null && this.renderFullTree()}
-        {this.props.topLevelPath != null && this.renderPartialTree()}
-      </div>
+      <StaticQuery
+        query={graphql`
+          query LandingMenuQuery {
+            ...docsMenu
+          }
+        `}
+        render={data => (
+          <div>
+            {this.props.topLevelPath == null && this.renderFullTree(data.file.childMarkdownRemark.frontmatter)}
+            {this.props.topLevelPath != null && this.renderPartialTree(data.file.childMarkdownRemark.frontmatter)}
+          </div>
+        )}
+      />
     )
   }
 }
 
-export default LandingMenu
+export default LandingMenu;

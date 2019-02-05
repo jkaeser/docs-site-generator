@@ -24,7 +24,6 @@ export default class HomePage extends React.Component {
 
   render() {
     const { frontmatter } = this.props.data.pageMarkdown
-    const { frontmatter: menu } = this.props.data.file.childMarkdownRemark
 
     return (
       <Layout>
@@ -39,7 +38,7 @@ export default class HomePage extends React.Component {
         </PageTitle>
         <section className="Home__content-wrapper">
           <div className="Home__content">
-            <LandingMenu data={menu} />
+            <LandingMenu />
           </div>
         </section>
         <Script
@@ -59,7 +58,6 @@ export const homePageQuery = graphql`
         subtitle
       }
     }
-    ...docsMenu
     ...siteTitle
   }
 `

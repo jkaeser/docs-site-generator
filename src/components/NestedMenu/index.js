@@ -95,7 +95,6 @@ class NestedMenuItem extends React.Component {
       var windowPath = window.location.pathname
 
       // Is this the page we're on?
-      console.log(windowPath);
       if (input === windowPath) {
         match = true
       } else {
