@@ -1,3 +1,5 @@
+import * as Utils from '../../js-utils/utils';
+
 /**
  * Formats menu data from GraphQL to work with menuCreateTree().
  *
@@ -62,7 +64,7 @@ export function menuAddToTree(node, treeNodes) {
 /**
  * Helper to format and sort data, then create a tree out of it.
  *
- * @param {array} nodes
+ * @param {array} data
  * @return {array}
  */
 export function menuTreeFromRawData(data) {
@@ -70,4 +72,25 @@ export function menuTreeFromRawData(data) {
     return menuCreateTree(menuFormatData(data.allMarkdownRemark.edges));
   }
   return;
+}
+
+
+/**
+ * Extract a portion of a menu from the tree.
+ *
+ * @param {array} menu
+ * @return {array}
+ */
+export function menuGetSection(menu) {
+  const path = Utils.safeWindowPath();
+  const pathParts = path.split('/').filter(part => part !== '');
+  let data = [];
+
+  menu.forEach(function(item) {
+    if ('/' + pathParts[0] === item.path) {
+      data.push(item);
+    }
+  })
+
+  return data;
 }

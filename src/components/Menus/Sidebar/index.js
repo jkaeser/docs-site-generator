@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import * as MenuFunctions from '../menu.js'
+import { menuTreeFromRawData, menuGetSection } from '../menu.js'
 
 export default class Sidebar extends React.Component {
   static propTypes = {
@@ -13,7 +13,7 @@ export default class Sidebar extends React.Component {
 
   renderItem = function(item) {
     return (
-      <li key={item.id}>
+      <li key={`sb-${item.id}`}>
         <Link to={item.path}>{item.title}</Link>
 
         {item.children.length !== 0 &&
@@ -47,7 +47,7 @@ export default class Sidebar extends React.Component {
         `}
         render={data => (
           <div>
-            {this.renderMenu(MenuFunctions.menuTreeFromRawData(data))}
+            {this.renderMenu(menuGetSection(menuTreeFromRawData(data)))}
           </div>
         )}
       />

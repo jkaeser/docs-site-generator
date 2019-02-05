@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
-import * as MenuFunctions from '../menu.js'
+import { menuTreeFromRawData } from '../menu.js'
 import './Grid.scss';
 
 export class GridItem extends React.Component {
@@ -26,9 +26,9 @@ export class Grid extends React.Component {
         `}
         render={data => (
           <div className="Grid">
-            {MenuFunctions.menuTreeFromRawData(data).map(item => (
+            {menuTreeFromRawData(data).map(item => (
               <GridItem
-                key={item.id}
+                key={`g-${item.id}`}
                 path={item.path}
                 title={item.title}
               />

@@ -1,18 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import * as Utils from '../../../js-utils/utils'
-import * as MenuFunctions from '../menu.js'
+import { menuFormatData } from '../menu.js'
 import './Breadcrumbs.scss'
-
-/**
- * Returns global window object if valid or an empty string (e.g. Node env)
- * @return {string}
- */
-function safeWindowPath() {
-  let path = typeof window !== 'undefined' ? window.location.pathname : ''
-  return path
-}
 
 /**
  * Represents a single breadcrumb
@@ -29,13 +20,13 @@ class Crumb extends React.Component {
   }
 
   render() {
-    let windowPath = safeWindowPath()
-    let crumbtitle = this.props.title
+    let windowPath = Utils.safeWindowPath();
+    let crumbtitle = this.props.title;
 
     if (
       Utils.stripSlashes(this.props.path) !== Utils.stripSlashes(windowPath)
     ) {
-      crumbtitle = <a href={this.props.path}>{this.props.title}</a>
+      crumbtitle = <Link to={this.props.path}>{this.props.title}</Link>;
     }
 
     return (
@@ -57,7 +48,7 @@ class Breadcrumbs extends React.Component {
    * @return {array}
    */
   buildCrumbs = function(data) {
-    let path = safeWindowPath()
+    let path = Utils.safeWindowPath()
     let pathParts = path.split('/').filter(part => part !== '')
     let pathCompare = '';
 
@@ -93,7 +84,7 @@ class Breadcrumbs extends React.Component {
         render={data => (
           <nav aria-label="Breadcrumb">
             <ul className="Breadcrumbs">
-              {this.buildCrumbs(MenuFunctions.menuFormatData(data.allMarkdownRemark.edges))}
+              {this.buildCrumbs(menuFormatData(data.allMarkdownRemark.edges))}
             </ul>
           </nav>
         )}
