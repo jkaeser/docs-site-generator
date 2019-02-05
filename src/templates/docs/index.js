@@ -4,7 +4,7 @@ import Layout from '../../components/Layout'
 import Helmet from 'react-helmet'
 import Sidebar from '../../components/Menus/Sidebar'
 import DocsSearch from '../../components/DocsSearch';
-import Breadcrumbs from '../../components/Breadcrumbs'
+import Breadcrumbs from '../../components/Menus/Breadcrumbs'
 import './Docs.scss'
 
 function stripHtml(html) {

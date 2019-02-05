@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
-import * as Utils from '../../js-utils/utils'
-import * as MenuFunctions from '../Menus/menu.js'
+import * as Utils from '../../../js-utils/utils'
+import * as MenuFunctions from '../menu.js'
 import './Breadcrumbs.scss'
 
 /**
