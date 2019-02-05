@@ -1,6 +1,6 @@
-@import "../../sass-utils/globals";
+@import "../../../sass-utils/globals";
 
-.LandingMenu {
+.Grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -35,28 +35,6 @@
         background-color: $c-1;
         text-decoration: underline;
         text-decoration-color: $c-5;
-      }
-    }
-
-    &--first {
-      + .DocsLanding__menu-item--first {
-        margin-top: 2.25rem;
-      }
-    }
-
-    &--second {
-      margin-top: .25rem;
-
-      a {
-        font-weight: 500;
-      }
-    }
-
-    &--third {
-      font-size: $fs-base;
-
-      a {
-        font-weight: 300;
       }
     }
   }

@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
 import DocsSearch from '../../components/DocsSearch'
-import LandingMenu from '../../components/LandingMenu'
+import Grid from '../../components/Menus/Grid'
 import './Home.scss';
 
 export default class HomePage extends React.Component {
@@ -38,7 +38,7 @@ export default class HomePage extends React.Component {
         </PageTitle>
         <section className="Home__content-wrapper">
           <div className="Home__content">
-            <LandingMenu />
+            <Grid />
           </div>
         </section>
         <Script

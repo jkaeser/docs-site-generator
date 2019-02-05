@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import Helmet from 'react-helmet'
-import Menu from '../../components/Menu'
+import Sidebar from '../../components/Menus/Sidebar'
 import DocsSearch from '../../components/DocsSearch';
 import Breadcrumbs from '../../components/Breadcrumbs'
 import './Docs.scss'
@@ -61,7 +61,7 @@ export default class DocsPage extends React.Component {
               {
                 <DocsSearch />
               }
-              <Menu />
+              <Sidebar />
             </aside>
           </div>
         </div>
