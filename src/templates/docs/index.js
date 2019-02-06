@@ -4,6 +4,7 @@ import Layout from '../../components/Layout'
 import Helmet from 'react-helmet'
 import Sidebar from '../../components/Menus/Sidebar'
 import Breadcrumbs from '../../components/Menus/Breadcrumbs'
+import Video from '../../components/Video'
 import './Docs.scss'
 
 function stripHtml(html) {
@@ -43,6 +44,9 @@ export default class DocsPage extends React.Component {
         <div className="Docs">
           <div className="Docs__wrapper">
             <section className="Docs__content">
+              { frontmatter.video &&
+                <Video src={frontmatter.video} />
+              }
               <h1 className="Docs__title">
                 {frontmatter.title}
               </h1>
@@ -74,6 +78,7 @@ export const docsPageQuery = graphql`
         title
         path
         docs_section
+        video
       }
       html
     }

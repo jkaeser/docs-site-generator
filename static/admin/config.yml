@@ -30,4 +30,5 @@ collections:
       - {label: "Path", name: "path", widget: "string", default: "/docs/", hint: "Add a relative path starting with \"/docs/\"."}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Keywords", name: "keywords", widget: "string", hint: "Enter a comma-separated list of keywords that are useful for search."}
+      - {label: "Video", name: "video", widget: "string", default: "/videos/[enter video file name here]", hint: "Optionally add a video to the top of the page. First, add a video to the 'static/video' directory, and then type the file name in this field."}
       - {label: "Body", name: "body", widget: "markdown"}
