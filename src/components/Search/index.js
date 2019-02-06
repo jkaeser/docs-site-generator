@@ -13,6 +13,13 @@ export default class Search extends React.Component {
     };
   }
 
+  clearSearch = (e) => {
+    this.setState({
+      query: ``,
+      results: [],
+    })
+  }
+
   render() {
     const activeClass = this.state.query.length !== 0 ? 'active' : '';
 
@@ -30,6 +37,12 @@ export default class Search extends React.Component {
           onChange={this.search}
           className={`Search__input ${activeClass}`}
         />
+        <button
+          className={`Search__clear ${activeClass}`}
+          onClick={this.clearSearch}
+        >
+          <span className="hidden">Clear search input</span>
+        </button>
         <ul className="Search__results">
           {this.state.results.map(page => (
             <li key={page.id} className="Search__result">
