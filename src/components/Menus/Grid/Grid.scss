@@ -27,7 +27,7 @@
       background-color: $c-1-translucent;
       margin: 0 auto;
       border-bottom: none;
-      border-radius: 2px;
+      border-radius: $border-radius;
       transition: all $transition-timing $transition-curve;
       text-decoration-color: $c-5;
 

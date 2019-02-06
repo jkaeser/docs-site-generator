@@ -9,7 +9,7 @@ function date() {
 const Footer = () => (
   <footer id="Footer">
     <div className="Footer__wrapper">
-      <div className="Footer__copyright">{`© ${date()} Chainalysis Inc. All right reserved. `}</div>
+      <div className="Footer__copyright">{`© ${date()} Chainalysis Inc. All rights reserved. `}</div>
     </div>
   </footer>
 )

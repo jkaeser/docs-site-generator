@@ -2,11 +2,7 @@
 
 .DocsSearch {
   display: flex;
-  margin: 0 3px 3px;
-
-  @include breakpoint($bp-768) {
-    margin: 0 0 3px 0;
-  }
+  margin-bottom: 1rem;
 
   &__input {
     letter-spacing: 1px;
@@ -15,6 +11,8 @@
     width: 100%;
     font-size: $fs-small;
     padding: 0 1rem;
+    border: 1px solid $grey;
+    border-radius: $border-radius;
   }
 
   &__input-icon {

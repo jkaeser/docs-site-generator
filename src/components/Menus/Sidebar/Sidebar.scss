@@ -1,0 +1,37 @@
+@import "../../../sass-utils/globals";
+
+.Sidebar {
+  background: $grey-light;
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+  border-radius: $border-radius;
+
+  &__item {
+    list-style: none;
+  }
+
+  &__children {
+    margin-left: 1.5rem;
+    padding-left: 0;
+  }
+
+  > li {
+    > a {
+      font-size: $fs-smaller;
+      font-weight: 700;
+    }
+
+    > ul > li {
+      a {
+        font-weight: 500;
+      }
+
+      > ul > li {
+        > a {
+          font-size: $fs-tiny;
+        }
+      }
+    }
+  }
+}

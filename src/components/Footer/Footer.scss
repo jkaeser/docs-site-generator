@@ -14,7 +14,7 @@
 
 .Footer {
   &__wrapper {
-    @include mw($bp-1280);
+    @include mw($site-max-width);
 
     display: flex;
     justify-content: space-between;

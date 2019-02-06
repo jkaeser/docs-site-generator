@@ -6,7 +6,7 @@
   padding: 1rem 2rem;
   z-index: 1000;
   border-bottom: 1px solid $grey-light;
-  background-color: #2F3A45;
+  background-color: $c-1;
   height: $header-height;
 
   @include breakpoint($bp-768) {
@@ -18,7 +18,7 @@
 
 .Header {
   &__wrapper {
-    @include mw($bp-1280);
+    @include mw($site-max-width);
 
     display: flex;
     justify-content: space-between;

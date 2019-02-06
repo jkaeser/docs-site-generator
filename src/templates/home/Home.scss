@@ -24,7 +24,7 @@
   }
 
   &__content {
-    @include mw($bp-1280);
+    @include mw($site-max-width);
   }
 
   &__search-wrapper {

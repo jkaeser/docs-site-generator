@@ -31,17 +31,22 @@ $fs-large: 1.75rem;
 $fs-extra-large: 2.25rem;
 $fs-huge: 3rem;
 
-// Breakpoints
-$bp-540: 33.75rem;
-$bp-768: 48rem;
-$bp-1024: 64rem;
-$bp-1280: 80rem;
-
 // Layout
 $desktop-padding: 4rem;
 $mobile-padding: 2rem;
 $header-height: 72px;
+$site-max-width: 68.75rem;
+
+// Breakpoints
+$bp-540: 33.75rem;
+$bp-768: 48rem;
+$bp-920: 57.5rem;
+$bp-1024: 64rem;
+$bp-1100: $site-max-width;
 
 // Animations
 $transition-curve: cubic-bezier(0.19, 1, 0.22, 1);
 $transition-timing: 1s;
+
+// Other
+$border-radius: 2px;
