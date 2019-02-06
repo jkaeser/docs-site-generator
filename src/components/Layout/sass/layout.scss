@@ -6,7 +6,7 @@ script {
 }
 
 *:focus {
-  outline: 4px solid $c-5;
+  @include outline;
 }
 
 *:active {

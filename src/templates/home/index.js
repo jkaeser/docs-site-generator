@@ -4,7 +4,7 @@ import Script from 'react-load-script'
 import Helmet from 'react-helmet'
 import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
-import DocsSearch from '../../components/DocsSearch'
+import Search from '../../components/Search'
 import Grid from '../../components/Menus/Grid'
 import './Home.scss';
 
@@ -24,6 +24,7 @@ export default class HomePage extends React.Component {
 
   render() {
     const { frontmatter } = this.props.data.pageMarkdown
+    const { siteSearchIndex } = this.props.data;
 
     return (
       <Layout>
@@ -33,7 +34,7 @@ export default class HomePage extends React.Component {
         <PageTitle className="Home__title">
           <h1>{frontmatter.title}</h1>
           <div className="Home__title-wrapper">
-            <DocsSearch />
+            <Search data={siteSearchIndex} />
           </div>
         </PageTitle>
         <section className="Home__content-wrapper">
@@ -59,5 +60,6 @@ export const homePageQuery = graphql`
       }
     }
     ...siteTitle
+    ...searchIndexQuery
   }
 `

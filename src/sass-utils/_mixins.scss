@@ -181,3 +181,7 @@
     }
   }
 }
+
+@mixin outline {
+  outline: 4px solid $c-5;
+}

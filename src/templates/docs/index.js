@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import Helmet from 'react-helmet'
 import Sidebar from '../../components/Menus/Sidebar'
-import DocsSearch from '../../components/DocsSearch';
 import Breadcrumbs from '../../components/Menus/Breadcrumbs'
 import './Docs.scss'
 
@@ -58,9 +57,6 @@ export default class DocsPage extends React.Component {
               <Breadcrumbs />
             </section>
             <aside className="Docs__sidebar">
-              {
-                <DocsSearch />
-              }
               <Sidebar />
             </aside>
           </div>

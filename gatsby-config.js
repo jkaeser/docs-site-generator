@@ -62,5 +62,27 @@ module.exports = {
       }
     },
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `@andrew-codes/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [
+          'title',
+          'keywords',
+          'body',
+          'path',
+        ],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type MarkdownRemark, list how to resolve the fields' values
+          MarkdownRemark: {
+            title: node => node.frontmatter.title,
+            keywords: node => node.frontmatter.keywords,
+            body: node => node.rawMarkdownBody,
+            path: node => node.frontmatter.path,
+          },
+        },
+      },
+    },
   ]
 };
