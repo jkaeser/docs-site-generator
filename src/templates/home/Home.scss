@@ -9,7 +9,7 @@
     @include mw($bp-768);
 
     text-transform: none;
-    margin-top: 1rem;
+    margin-top: 1.75rem;
   }
 
   &__subtitle {
@@ -25,10 +25,5 @@
 
   &__content {
     @include mw($site-max-width);
-  }
-
-  &__search-wrapper {
-    max-width: 450px;
-    margin: 2rem auto 4rem;
   }
 }

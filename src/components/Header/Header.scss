@@ -34,14 +34,15 @@
 
     a {
       display: block;
-      transition: all $transition-timing $transition-curve;
-
-      &:focus {
-        box-shadow: 2px 2px 4px 1px $c-5;
-      }
+      border-bottom: 1px solid transparent;
 
       &:hover {
-        border-bottom: none;
+        border-color: $c-5;
+      }
+
+      &:focus {
+        outline-width: 2px;
+        outline-offset: 2px;
       }
     }
   }

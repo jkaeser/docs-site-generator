@@ -31,6 +31,7 @@
       transition: all $transition-timing $transition-curve;
       text-decoration-color: $c-5;
 
+      &:focus,
       &:hover {
         background-color: $c-1;
         text-decoration: underline;

@@ -62,6 +62,10 @@
         border-bottom: none;
         text-decoration: underline;
       }
+
+      &:focus {
+        outline-offset: -4px;
+      }
     }
 
     &:nth-of-type(even) {
