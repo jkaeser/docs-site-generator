@@ -30,11 +30,14 @@ export default class Sidebar extends React.Component {
 
   renderMenu = function(data) {
     return (
-      <ul className="Sidebar">
-        {data.map(item => (
-          this.renderItem(item)
-        ))}
-      </ul>
+      <nav className="Sidebar">
+        <span className="Sidebar__intro">In this guide:</span>
+        <ul className="Sidebar__list">
+          {data.map(item => (
+            this.renderItem(item)
+          ))}
+        </ul>
+      </nav>
     )
   }
 

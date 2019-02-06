@@ -2,10 +2,25 @@
 
 .Sidebar {
   background: $grey-light;
-  list-style: none;
-  margin: 0;
   padding: 1rem;
   border-radius: $border-radius;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__intro {
+    display: block;
+    color: $white;
+    font-family: $f-secondary;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin: -1rem -1rem 1rem -1rem;
+    padding: .5rem 1rem;
+    background: $c-1-translucent;
+  }
 
   &__item {
     list-style: none;

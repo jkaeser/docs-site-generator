@@ -139,24 +139,35 @@
 
 @mixin wysiwyg {
   a {
-    border-bottom: 1px solid $c-1;
+    border-bottom: 1px solid $c-3;
+    transition: all $transition-timing $transition-curve;
+
+    &:hover {
+      border-color: $c-1;
+    }
   }
 
-  img {
+  img,
+  video {
     border: 2px solid $grey;
     margin: 3.5rem 0;
+    max-width: 100%;
   }
 
-  strong,
-  em {
-    color: $c-1;
-  }
-
+  code,
   pre {
     background-color: $grey-light;
     font-size: $fs-base;
     line-height: 1.2;
+  }
+
+  pre {
     padding: 1rem;
+  }
+
+  code {
+    color: $c-1;
+    padding: 0 .25rem;
   }
 
   hr {
@@ -165,20 +176,23 @@
 
   blockquote {
     position: relative;
+    border-left: 4px solid $c-5;
+    margin: 1rem 0 1rem 3rem;
+    padding-left: 2rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
 
-    &::before {
-      // @include quotation-mark('../../img/leftquote.svg', 'right');
+  h2,
+  h3 {
+    color: $c-5;
+    font-weight: 600;
+  }
 
-      background-position: top;
-      height: 45px;
-      position: absolute;
-      left: -30px;
-
-      @include breakpoint($bp-768) {
-        top: -15px;
-        left: -55px;
-      }
-    }
+  h4,
+  h5,
+  h6 {
+    color: $c-1;
   }
 }
 

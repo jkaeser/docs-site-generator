@@ -8,14 +8,12 @@
 
 .Crumb {
   font-family: $f-secondary;
-  font-size: $fs-tiny;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   display: inline-block;
-  color: $grey-dark;
+  color: $c-1-translucent;
+  font-weight: 500;
 
   a {
-    font-weight: 400;
+    font-weight: 600;
   }
 
   &::after {
