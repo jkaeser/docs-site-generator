@@ -9,6 +9,25 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    > li {
+      > a {
+        font-size: $fs-smaller;
+        font-weight: 700;
+      }
+
+      > ul > li {
+        a {
+          font-weight: 500;
+        }
+
+        > ul > li {
+          > a {
+            font-size: $fs-tiny;
+          }
+        }
+      }
+    }
   }
 
   &__intro {
@@ -24,29 +43,12 @@
 
   &__item {
     list-style: none;
+    line-height: 1.2;
+    margin: 1rem 0;
   }
 
   &__children {
     margin-left: 1.5rem;
     padding-left: 0;
-  }
-
-  > li {
-    > a {
-      font-size: $fs-smaller;
-      font-weight: 700;
-    }
-
-    > ul > li {
-      a {
-        font-weight: 500;
-      }
-
-      > ul > li {
-        > a {
-          font-size: $fs-tiny;
-        }
-      }
-    }
   }
 }

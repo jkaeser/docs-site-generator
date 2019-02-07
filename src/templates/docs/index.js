@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import Helmet from 'react-helmet'
+import Search from '../../components/Search'
 import Sidebar from '../../components/Menus/Sidebar'
 import Breadcrumbs from '../../components/Menus/Breadcrumbs'
 import Video from '../../components/Video'
@@ -34,6 +35,7 @@ export default class DocsPage extends React.Component {
 
   render() {
     const { frontmatter, html: body } = this.props.data.pageMarkdown
+    const { siteSearchIndex } = this.props.data
     const description = this.state.description
 
     return (
@@ -61,6 +63,7 @@ export default class DocsPage extends React.Component {
               <Breadcrumbs />
             </section>
             <aside className="Docs__sidebar">
+              <Search data={siteSearchIndex} />
               <Sidebar />
             </aside>
           </div>
@@ -82,5 +85,6 @@ export const docsPageQuery = graphql`
       }
       html
     }
+    ...searchIndexQuery
   }
 `

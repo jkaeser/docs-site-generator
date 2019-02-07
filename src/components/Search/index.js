@@ -14,6 +14,7 @@ export default class Search extends React.Component {
   }
 
   clearSearch = (e) => {
+    e.preventDefault();
     this.setState({
       query: ``,
       results: [],
@@ -21,29 +22,32 @@ export default class Search extends React.Component {
   }
 
   render() {
-    const activeClass = this.state.query.length !== 0 ? 'active' : '';
+    const hasQuery = this.state.query.length !== 0 ? 'hasQuery' : '';
+    const hasResults = this.state.results.length !== 0 ? 'hasResults' : '';
 
     return (
       <div className="Search">
-        <label htmlFor="search" className="hidden">
-          Search guides
-        </label>
-        <input
-          type="text"
-          placeholder="Search guides..."
-          name="search"
-          id="search"
-          value={this.state.query}
-          onChange={this.search}
-          className={`Search__input ${activeClass}`}
-        />
-        <button
-          className={`Search__clear ${activeClass}`}
-          onClick={this.clearSearch}
-        >
-          <span className="hidden">Clear search input</span>
-        </button>
-        <ul className="Search__results">
+        <form autoComplete="off">
+          <label htmlFor="searchInput" className="hidden">
+            Search guides
+          </label>
+          <input
+            type="text"
+            placeholder="Search guides..."
+            name="searchInput"
+            id="search"
+            value={this.state.query}
+            onChange={this.search}
+            className={`Search__input ${hasQuery}`}
+          />
+          <button
+            className={`Search__clear ${hasQuery}`}
+            onClick={this.clearSearch}
+          >
+            <span className="hidden">Clear search input</span>
+          </button>
+        </form>
+        <ul className={`Search__results ${hasResults}`}>
           {this.state.results.map(page => (
             <li key={page.id} className="Search__result">
               <Link to={page.path}>
@@ -58,7 +62,7 @@ export default class Search extends React.Component {
 
   getOrCreateIndex = function() {
     // Return index, or create an elastic lunr index and hydrate with graphql query results
-    return this.index ? this.index : Index.load(this.props.data.index);
+  return this.index ? this.index : Index.load(this.props.data.index);
   }
 
   search = (event) => {
