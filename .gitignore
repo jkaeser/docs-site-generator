@@ -9,5 +9,5 @@ yarn-error.log
 .idea
 .env
 # Ignore for now
-pages
+src/pages/docs
 README.md

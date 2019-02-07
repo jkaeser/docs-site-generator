@@ -1,0 +1,11 @@
+@import "../../sass-utils/globals";
+
+.FourOhFour {
+  @include section;
+  @include mw($site-max-width);
+
+  p {
+    @include h2;
+    margin: 0 0 2rem 0;
+  }
+}
