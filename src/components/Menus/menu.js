@@ -1,6 +1,32 @@
 import { graphql } from 'gatsby';
 import * as Utils from '../../js-utils/utils';
 
+const DEFAULT_WEIGHT = 99;
+
+/**
+ * Sort menu items by path length.
+ *
+ * @param {array} menu
+ * @return {array}
+ */
+export function menuSortByPath(menu) {
+  return menu.sort(function(a, b) {
+    return a.path.split('/').length - b.path.split('/').length;
+  });
+}
+
+/**
+ * Sort menu items by weight field.
+ *
+ * @param {array} menu
+ * @return {array}
+ */
+export function menuSortByWeight(menu) {
+  return menu.sort(function(a, b) {
+    return a.weight - b.weight;
+  });
+}
+
 /**
  * Formats menu data from GraphQL to work with menuCreateTree().
  *
@@ -16,15 +42,11 @@ export function menuFormatData(data) {
   }
 
   // Top level items must appear first for createTree() to work.
-  formatted.sort(function(a, b) {
-    return a.path.split('/').length - b.path.split('/').length;
-  });
-
-  return formatted;
+  return menuSortByPath(formatted);
 }
 
 /**
- * Creates a menu tree out of formatted GraphQL data.
+ * Creates a sorted menu tree out of formatted GraphQL data.
  *
  * @param {array} nodes
  * @return {array}
@@ -58,7 +80,7 @@ export function menuAddToTree(node, treeNodes) {
     title: node.title,
     path: node.path,
     id: node.id,
-    weight: node.weight,
+    weight: node.weight !== null ? node.weight : DEFAULT_WEIGHT,
     children: []
   });
 }
@@ -78,14 +100,14 @@ export function menuTreeFromRawData(data) {
 
 
 /**
- * Extract a portion of a menu from the tree.
+ * Extract a portion of a menu from the tree based on the current page path.
  *
  * @param {array} menu
  * @return {array}
  */
-export function menuGetSection(menu) {
+export function menuGetCurrentSection(menu) {
   const path = Utils.safeWindowPath();
-  const pathParts = path.split('/').filter(part => part !== '');
+  const pathParts = Utils.splitPath(path);
   let data = [];
 
   menu.forEach(function(item) {
@@ -95,19 +117,6 @@ export function menuGetSection(menu) {
   })
 
   return data;
-}
-/**
- * Sort menu items by weight field.
- *
- * @param {array} menu
- * @return {array}
- */
-export function menuSortByWeight(menu) {
-  return menu.sort(function(a, b) {
-    let aWeight = a.weight !== null ? a.weight : 99;
-    let bWeight = b.weight !== null ? b.weight : 99;
-    return aWeight - bWeight;
-  });
 }
 
 export const dynamicMenuQuery = graphql`

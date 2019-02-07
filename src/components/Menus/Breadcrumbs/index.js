@@ -30,7 +30,7 @@ class Crumb extends React.Component {
     }
 
     return (
-      <li className="Crumb" key={this.props.path}>
+      <li className="Crumb">
         {crumbtitle}
       </li>
     )
@@ -49,7 +49,7 @@ class Breadcrumbs extends React.Component {
    */
   buildCrumbs = function(data) {
     let path = Utils.safeWindowPath()
-    let pathParts = path.split('/').filter(part => part !== '')
+    const pathParts = Utils.splitPath(path);
     let pathCompare = '';
 
     // Start crumbs with link to home page.

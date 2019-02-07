@@ -24,3 +24,12 @@ export function safeWindowPath() {
   let path = typeof window !== 'undefined' ? window.location.pathname : '';
   return path;
 }
+
+/**
+ * Split a path string into its component parts.
+ * @param {string} path
+ * @return {array}
+ */
+export function splitPath(path) {
+  return path.split('/').filter(part => part !== '')
+}

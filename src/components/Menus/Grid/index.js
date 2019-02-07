@@ -1,12 +1,23 @@
 import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import { menuTreeFromRawData } from '../menu.js'
 import './Grid.scss';
 
 export class GridItem extends React.Component {
+  static propTypes = {
+    path: PropTypes.string,
+    title: PropTypes.string,
+  }
+
+  static defaultProps = {
+    path: '',
+    title: '',
+  }
+
   render() {
     return (
-      <div key={this.props.key} className='Grid__item'>
+      <div className='Grid__item'>
         <Link to={this.props.path}>
           {this.props.title}
         </Link>
