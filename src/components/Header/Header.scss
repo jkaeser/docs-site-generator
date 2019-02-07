@@ -8,8 +8,10 @@
   border-bottom: 1px solid $grey-light;
   background-color: $c-1;
   height: $header-height;
+  display: flex;
 
   @include breakpoint($bp-768) {
+    display: block;
     position: static;
     z-index: 0;
     height: auto;
