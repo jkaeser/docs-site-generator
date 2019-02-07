@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby';
 import * as Utils from '../../js-utils/utils';
 
 /**
@@ -34,7 +35,7 @@ export function menuCreateTree(nodes) {
     var node = nodes[i];
     menuAddToTree(node, tree);
   }
-  return tree;
+  return menuSortByWeight(tree);
 }
 
 /**
@@ -57,6 +58,7 @@ export function menuAddToTree(node, treeNodes) {
     title: node.title,
     path: node.path,
     id: node.id,
+    weight: node.weight,
     children: []
   });
 }
@@ -94,3 +96,33 @@ export function menuGetSection(menu) {
 
   return data;
 }
+/**
+ * Sort menu items by weight field.
+ *
+ * @param {array} menu
+ * @return {array}
+ */
+export function menuSortByWeight(menu) {
+  return menu.sort(function(a, b) {
+    let aWeight = a.weight !== null ? a.weight : 99;
+    let bWeight = b.weight !== null ? b.weight : 99;
+    return aWeight - bWeight;
+  });
+}
+
+export const dynamicMenuQuery = graphql`
+  fragment dynamicMenuQuery on Query {
+    allMarkdownRemark(filter:{ frontmatter:{ templateKey:{ eq: "docs"} } } ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
+            weight
+          }
+        }
+      }
+    }
+  }
+`
