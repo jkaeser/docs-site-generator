@@ -4,6 +4,16 @@
   margin-bottom: 1rem;
   position: relative;
 
+  .Search__results {
+    display: none;
+  }
+
+  &:focus-within {
+    .Search__results {
+      display: block;
+    }
+  }
+
   &__input {
     letter-spacing: 1px;
     max-width: none;

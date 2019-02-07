@@ -11,6 +11,15 @@ export default class Search extends React.Component {
       query: ``,
       results: [],
     };
+    this.clearSearch = this.clearSearch.bind(this);
+    this.handleKeydown = this.handleKeydown.bind(this);
+  }
+
+  handleKeydown = (e) => {
+    // Do not clear input when enter/return key is pressed.
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
   }
 
   clearSearch = (e) => {
@@ -38,6 +47,7 @@ export default class Search extends React.Component {
             id="search"
             value={this.state.query}
             onChange={this.search}
+            onKeyDown={this.handleKeydown}
             className={`Search__input ${hasQuery}`}
           />
           <button
