@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as Utils from '../../js-utils/utils';
 
-const DEFAULT_WEIGHT = 99;
+const MENU_ITEM_FALLBACK_WEIGHT = 99;
 
 /**
  * Sort menu items by path length.
@@ -23,7 +23,7 @@ export function menuSortByPath(menu) {
  */
 export function menuSortByWeight(menu) {
   return menu.sort(function(a, b) {
-    return a.weight - b.weight;
+    return parseInt(a.weight) - parseInt(b.weight);
   });
 }
 
@@ -70,6 +70,8 @@ export function menuAddToTree(node, treeNodes) {
   // Check if the item node should inserted in a subnode.
   for (var i = 0 ; i < treeNodes.length ; i++) {
     var treeNode = treeNodes[i];
+    // @TODO: Determine shape of node.path and handle if it doesn't have slashes
+    // in the expected positions.
     if (node.path.indexOf(treeNode.path + '/') === 0) {
       menuAddToTree(node, treeNode.children);
       return;
@@ -80,7 +82,7 @@ export function menuAddToTree(node, treeNodes) {
     title: node.title,
     path: node.path,
     id: node.id,
-    weight: node.weight !== null ? node.weight : DEFAULT_WEIGHT,
+    weight: node.weight !== null ? node.weight : MENU_ITEM_FALLBACK_WEIGHT,
     children: []
   });
 }
@@ -95,12 +97,16 @@ export function menuTreeFromRawData(data) {
   if (data.allMarkdownRemark.edges) {
     return menuCreateTree(menuFormatData(data.allMarkdownRemark.edges));
   }
+  else {
+    console.log('ERROR: Menu data not available from GraphQL.');
+  }
   return;
 }
 
 
 /**
  * Extract a portion of a menu from the tree based on the current page path.
+ * This assumes a tree as produced by menuCreateTree().
  *
  * @param {array} menu
  * @return {array}
@@ -111,7 +117,7 @@ export function menuGetCurrentSection(menu) {
   let data = [];
 
   menu.forEach(function(item) {
-    if ('/' + pathParts[0] === item.path) {
+    if (pathParts[0] === Utils.stripSlashes(item.path)) {
       data.push(item);
     }
   })
