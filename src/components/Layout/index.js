@@ -60,26 +60,3 @@ export const siteTitleFragmentQuery = graphql`
     }
   }
 `
-
-export const docsMenuQuery = graphql`
-  fragment docsMenu on Query {
-    file(name: { eq: "docs-menu" }) {
-      childMarkdownRemark {
-        frontmatter {
-          items_1 {
-            label
-            path
-            items_2 {
-              label
-              path
-              items_3 {
-                label
-                path
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
