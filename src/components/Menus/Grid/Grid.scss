@@ -39,6 +39,11 @@
         text-decoration-color: $c-5;
       }
 
+      @include breakpoint($bp-768) {
+        padding: 3.5rem 2rem 1rem;
+        justify-content: flex-start;
+      }
+
       svg {
         margin-bottom: 1rem;
       }
