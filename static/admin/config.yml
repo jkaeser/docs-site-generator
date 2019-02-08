@@ -29,6 +29,7 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "docs"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Path", name: "path", widget: "string", default: "/docs/", hint: "Add a relative path starting with \"/docs/\"."}
+      - {label: "Icon", name: "icon", widget: "string", help: "Enter the name of a Font Awesome icon. See https://fontawesome.com/icons?d=gallery&m=free for a list of available icons."}
       - {label: "Weight", name: "weight", widget: "number", valueType: "int", default: "1", hint: "Weights determine where links to this page will appear in menus. Smaller numbers (e.g. -1, 1) will appear higher up in menus. Larger numbers (e.g. 2, 99) will appear lower in menus."}
       - {label: "Keywords", name: "keywords", widget: "string", hint: "Enter a comma-separated list of keywords that are useful for search."}
       - {label: "Video", name: "video", widget: "string", default: "/video/[enter video file name here]", hint: "Optionally add a video to the top of the page. First, add a video to the 'static/video' directory, and then type the file name in this field."}

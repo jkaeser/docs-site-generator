@@ -6,6 +6,7 @@ import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
 import Search from '../../components/Search'
 import Grid from '../../components/Menus/Grid'
+import '../../js-utils/fontawesome.js';
 import './Home.scss';
 
 export default class HomePage extends React.Component {

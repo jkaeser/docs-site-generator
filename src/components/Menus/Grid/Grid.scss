@@ -17,11 +17,12 @@
     a {
       color: $white;
       min-height: 200px;
-      padding: 1rem;
+      padding: 1rem 2rem;
       font-size: $fs-medium;
       font-weight: 300;
       text-align: center;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: $c-1-translucent;
@@ -36,6 +37,10 @@
         background-color: $c-1;
         text-decoration: underline;
         text-decoration-color: $c-5;
+      }
+
+      svg {
+        margin-bottom: 1rem;
       }
     }
   }

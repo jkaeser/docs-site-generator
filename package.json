@@ -5,6 +5,10 @@
   "author": "John Kaeser <jkaeser@zivtech.com>",
   "dependencies": {
     "@andrew-codes/gatsby-plugin-elasticlunr-search": "^1.0.4",
+    "@fortawesome/fontawesome-free": "^5.7.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.14",
+    "@fortawesome/free-solid-svg-icons": "^5.7.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.2.5",
     "fbjs": "^1.0.0",

@@ -83,6 +83,7 @@ export function menuAddToTree(node, treeNodes) {
     path: node.path,
     id: node.id,
     weight: node.weight !== null ? node.weight : MENU_ITEM_FALLBACK_WEIGHT,
+    icon: node.icon || "",
     children: []
   });
 }
@@ -135,6 +136,7 @@ export const dynamicMenuQuery = graphql`
             title
             path
             weight
+            icon
           }
         }
       }
