@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from "gatsby";
 import Helmet from 'react-helmet';
 import Header from '../Header';
 import Footer from '../Footer';
+import '../../js-utils/fontawesome.js';
 import './sass/layout.scss';
 import './sass/typography.scss';
 
