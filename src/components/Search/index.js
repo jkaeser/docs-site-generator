@@ -1,8 +1,11 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { Index } from 'elasticlunr';
+import * as elasticlunr from 'elasticlunr';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Search.scss';
+
+const { Index } = elasticlunr;
+elasticlunr.clearStopWords();
 
 // Search component
 export default class Search extends React.Component {
