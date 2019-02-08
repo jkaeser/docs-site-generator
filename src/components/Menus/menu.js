@@ -16,14 +16,27 @@ export function menuSortByPath(menu) {
 }
 
 /**
- * Sort menu items by weight field.
+ * Sort menu items by weight field. If weights match, sort alphabetically.
  *
  * @param {array} menu
  * @return {array}
  */
 export function menuSortByWeight(menu) {
   return menu.sort(function(a, b) {
-    return parseInt(a.weight) - parseInt(b.weight);
+    let aWeight = parseInt(a.weight);
+    let bWeight = parseInt(b.weight);
+
+    if (aWeight !== bWeight) {
+      return aWeight - bWeight;
+    }
+    else {
+      if (a.title.toLowerCase() > b.title.toLowerCase()) {
+        return 1;
+      }
+      else {
+        return -1;
+      }
+    }
   });
 }
 
