@@ -8,6 +8,6 @@ public/
 yarn-error.log
 .idea
 .env
+
 # Ignore for now
-src/pages/docs
 README.md
