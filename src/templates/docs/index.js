@@ -77,10 +77,8 @@ export const docsPageQuery = graphql`
   query DocsPage($path: String!) {
     pageMarkdown: markdownRemark(frontmatter: { path: { eq: $path } }) {
       frontmatter {
-        docsType
         title
         path
-        docs_section
         video
       }
       html
