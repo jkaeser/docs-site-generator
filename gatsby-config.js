@@ -18,7 +18,26 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages'
+        name: 'pages',
+        ignore: [
+          '**/*.mov',
+          '**/*.mp4',
+          '**/*.jpg',
+          '**/*.jpeg',
+          '**/*.png',
+          '**/*.svg',
+          '**/*.gif'
+        ]
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages/docs`,
+        name: 'media',
+        ignore: [
+          '**/*.md'
+        ]
       }
     },
     {
