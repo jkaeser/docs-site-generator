@@ -62,7 +62,7 @@ export default class Video extends React.Component {
 
 export const videoFileQuery = graphql`
   fragment videoFileQuery on Query {
-    allFile(filter: {extension: {in: ["mov", "mp4"]}}) {
+    allFile(filter: {sourceInstanceName: {eq: "media"}, extension: {in: ["mov", "mp4"]}}) {
       edges {
         node {
           relativePath

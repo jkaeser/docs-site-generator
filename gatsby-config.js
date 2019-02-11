@@ -1,4 +1,4 @@
-const siteUrl = `https://chainalysis.com`;
+const siteUrl = `https://docs.chainalysis.com`;
 
 module.exports = {
   siteMetadata: {
@@ -26,7 +26,9 @@ module.exports = {
           '**/*.jpeg',
           '**/*.png',
           '**/*.svg',
-          '**/*.gif'
+          '**/*.gif',
+          '**/*.scss',
+          '**/*.js'
         ]
       }
     },
@@ -36,15 +38,10 @@ module.exports = {
         path: `${__dirname}/src/pages/docs`,
         name: 'media',
         ignore: [
-          '**/*.md'
+          '**/*.md',
+          '**/*.scss',
+          '**/*.js'
         ]
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/img`,
-        name: 'images'
       }
     },
     `gatsby-plugin-sharp`,
@@ -52,7 +49,20 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: []
+        plugins: [
+          {
+            resolve: `gatsby-remark-relative-images`
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 695,
+              linkImagesToOriginal: true,
+              quality: 100,
+              wrapperStyle: 'margin: 3.5rem 0;',
+            }
+          }
+        ]
       }
     },
     {

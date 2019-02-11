@@ -145,12 +145,19 @@
     &:hover {
       border-color: $c-1;
     }
+
+    &.gatsby-resp-image-link {
+      border-bottom: none;
+
+      &:hover {
+        border-bottom: none;
+      }
+    }
   }
 
   img,
   video {
     border: 2px solid $grey;
-    margin: 3.5rem 0;
     max-width: 100%;
   }
 
