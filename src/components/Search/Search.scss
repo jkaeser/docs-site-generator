@@ -22,6 +22,10 @@
     border-radius: $border-radius;
     height: 60px;
 
+    &::-ms-clear {
+      display: none;
+    }
+
     &.hasQuery {
       outline: 4px solid $c-5;
       outline-offset: -2px;
@@ -79,7 +83,7 @@
     margin: 0 0 2rem 0;
     padding: 0;
     max-height: 50vh;
-    overflow: scroll;
+    overflow: auto;
 
     &.hasResults {
       border: 1px solid $grey-dark;
