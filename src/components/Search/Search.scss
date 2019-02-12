@@ -4,16 +4,6 @@
   margin-bottom: 1rem;
   position: relative;
 
-  .Search__results {
-    display: none;
-  }
-
-  &:focus-within {
-    .Search__results {
-      display: block;
-    }
-  }
-
   &__icon {
     position: absolute;
     left: 1rem;
@@ -79,6 +69,7 @@
   }
 
   &__results {
+    display: none;
     position: absolute;
     top: 62px;
     left: -2px;
@@ -93,6 +84,10 @@
     &.hasResults {
       border: 1px solid $grey-dark;
       border-top: none;
+    }
+
+    &.isFocused {
+      display: block;
     }
   }
 

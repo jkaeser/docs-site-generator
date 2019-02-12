@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import * as elasticlunr from 'elasticlunr';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FocusWithin from 'react-focus-within';
 import './Search.scss';
 
 const { Index } = elasticlunr;
@@ -39,39 +40,43 @@ export default class Search extends React.Component {
     const hasResults = this.state.results.length !== 0 ? 'hasResults' : '';
 
     return (
-      <div className="Search">
-        <form autoComplete="off">
-          <label htmlFor="searchInput" className="hidden">
-            Search guides
-          </label>
-          <FontAwesomeIcon icon="search" className="Search__icon" />
-          <input
-            type="text"
-            placeholder="Search guides..."
-            name="searchInput"
-            id="search"
-            value={this.state.query}
-            onChange={this.search}
-            onKeyDown={this.handleKeydown}
-            className={`Search__input ${hasQuery}`}
-          />
-          <button
-            className={`Search__clear ${hasQuery}`}
-            onClick={this.clearSearch}
-          >
-            <span className="hidden">Clear search input</span>
-          </button>
-        </form>
-        <ul className={`Search__results ${hasResults}`}>
-          {this.state.results.map(page => (
-            <li key={page.id} className="Search__result">
-              <Link to={page.path}>
-                {page.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <FocusWithin>
+        {({ focusProps, isFocused }) => (
+          <div className="Search" {...focusProps}>
+            <form autoComplete="off">
+              <label htmlFor="searchInput" className="hidden">
+                Search guides
+              </label>
+              <FontAwesomeIcon icon="search" className="Search__icon" />
+              <input
+                type="text"
+                placeholder="Search guides..."
+                name="searchInput"
+                id="search"
+                value={this.state.query}
+                onChange={this.search}
+                onKeyDown={this.handleKeydown}
+                className={`Search__input ${hasQuery}`}
+              />
+              <button
+                className={`Search__clear ${hasQuery}`}
+                onClick={this.clearSearch}
+              >
+                <span className="hidden">Clear search input</span>
+              </button>
+            </form>
+            <ul className={`Search__results ${hasResults} ${isFocused ? 'isFocused' : ''}`}>
+              {this.state.results.map(page => (
+                <li key={page.id} className="Search__result">
+                  <Link to={page.path}>
+                    {page.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </FocusWithin>
     );
   }
 
