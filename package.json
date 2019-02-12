@@ -44,7 +44,8 @@
   "license": "UNLICENSED",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build && gatsby serve",
-    "develop": "gatsby develop"
+    "develop": "./node_modules/.bin/gatsby develop",
+    "demo": "./node_modules/.bin/gatsby build && ./node_modules/.bin/gatsby serve",
+    "build": "./node_modules/.bin/gatsby build"
   }
 }
