@@ -46,12 +46,12 @@ export default class DocsPage extends React.Component {
         <div className="Docs">
           <div className="Docs__wrapper">
             <section className="Docs__content">
-              { frontmatter.video &&
-                <Video src={frontmatter.video} />
-              }
               <h1 className="Docs__title">
                 {frontmatter.title}
               </h1>
+              { frontmatter.video &&
+                <Video src={frontmatter.video} />
+              }
               <div>
                 <div
                   className="Docs__content-body"
