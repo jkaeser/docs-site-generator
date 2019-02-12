@@ -43,6 +43,10 @@
     border: none;
     background: $grey-light;
 
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
     &.hasQuery {
       display: block;
     }

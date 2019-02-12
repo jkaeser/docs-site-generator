@@ -65,7 +65,14 @@ export default class Search extends React.Component {
                 <span className="hidden">Clear search input</span>
               </button>
             </form>
-            <ul className={`Search__results ${hasResults} ${isFocused ? 'isFocused' : ''}`}>
+            <ul
+              className={`
+                Search__results
+                ${hasResults}
+                ${isFocused ? 'isFocused' : ''}
+              `}
+              tabIndex='-1'
+              >
               {this.state.results.map(page => (
                 <li key={page.id} className="Search__result">
                   <Link to={page.path}>
