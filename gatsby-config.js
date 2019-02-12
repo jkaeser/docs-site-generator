@@ -59,7 +59,7 @@ module.exports = {
               maxWidth: 695,
               linkImagesToOriginal: true,
               quality: 100,
-              wrapperStyle: 'margin: 3.5rem 0;',
+              wrapperStyle: 'margin: 3rem 0;',
             }
           }
         ]

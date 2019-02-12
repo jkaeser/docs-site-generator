@@ -155,6 +155,20 @@
     }
   }
 
+  p {
+    margin: 0;
+
+    + p {
+      margin-top: 1rem;
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 3rem;
+    margin: 1rem 0;
+  }
+
   img,
   video {
     border: 2px solid $grey;
@@ -170,6 +184,7 @@
 
   pre {
     padding: 1rem;
+    margin: 1rem 0;
   }
 
   code {
@@ -178,7 +193,7 @@
   }
 
   hr {
-    margin: 3.5rem 0;
+    margin: 3rem 0;
   }
 
   blockquote {
@@ -188,6 +203,14 @@
     padding-left: 2rem;
     font-style: italic;
     line-height: 1.5;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1.2rem 0;
   }
 
   h2,
