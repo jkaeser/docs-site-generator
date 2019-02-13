@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Script from 'react-load-script'
 import Helmet from 'react-helmet'
 import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
@@ -9,19 +8,6 @@ import Grid from '../../components/Menus/Grid'
 import './Home.scss';
 
 export default class HomePage extends React.Component {
-  handleScriptLoad() {
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', user => {
-        if (!user) {
-          window.netlifyIdentity.on('login', () => {
-            document.location.href = '/admin/'
-          })
-        }
-      })
-    }
-    window.netlifyIdentity.init()
-  }
-
   render() {
     const { frontmatter } = this.props.data.pageMarkdown
     const { siteSearchIndex } = this.props.data;
@@ -42,10 +28,6 @@ export default class HomePage extends React.Component {
             <Grid />
           </div>
         </section>
-        <Script
-          url="https://identity.netlify.com/v1/netlify-identity-widget.js"
-          onLoad={this.handleScriptLoad.bind(this)}
-        />
       </Layout>
     )
   }
@@ -59,7 +41,6 @@ export const homePageQuery = graphql`
         subtitle
       }
     }
-    ...siteTitle
     ...searchIndexQuery
   }
 `
