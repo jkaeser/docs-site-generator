@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -10,7 +9,7 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             frontmatter {
-              templateKey
+              home
               path
             }
           }
@@ -23,21 +22,20 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      var templateKey = node.frontmatter.templateKey;
-      if (fs.existsSync(`src/templates/${templateKey}/index.js`)) {
-        var templatePath = path.resolve(`src/templates/${templateKey}/index.js`);
-      }
-      else if (templateKey != null) {
-        var templatePath = path.resolve(`src/templates/${templateKey}.js`);
+      if (node.frontmatter.home) {
+        createPage({
+          path: node.frontmatter.path,
+          component: path.resolve(`src/templates/home/index.js`),
+          context: {}
+        });
       }
       else {
-        return;
+        createPage({
+          path: node.frontmatter.path,
+          component: path.resolve(`src/templates/docs/index.js`),
+          context: {}
+        });
       }
-      createPage({
-        path: node.frontmatter.path,
-        component: templatePath,
-        context: {} // additional data can be passed via context
-      });
     });
   });
 };

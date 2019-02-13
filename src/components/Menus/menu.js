@@ -141,7 +141,7 @@ export function menuGetCurrentSection(menu) {
 
 export const dynamicMenuQuery = graphql`
   fragment dynamicMenuQuery on Query {
-    allMarkdownRemark(filter:{ frontmatter:{ templateKey:{ eq: "docs"} } } ) {
+    allMarkdownRemark(filter:{ frontmatter:{ home:{ ne: true} } } ) {
       edges {
         node {
           id
