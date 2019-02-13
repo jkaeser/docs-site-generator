@@ -1,18 +1,19 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import './Nav.scss'
+import React from 'react';
+import { Link } from 'gatsby';
+import './Nav.scss';
 
 class Nav extends React.Component {
   constructor(props) {
     super(props)
     this.state = { open: false }
     this.toggleMenu = this.toggleMenu.bind(this)
+    this.closeMenu = this.closeMenu.bind(this)
   }
 
-  toggleMenu() {
+  toggleMenu = function() {
     this.setState(prevState => ({
       open: !prevState.open,
-    }))
+    }));
 
     //@TODO: Set this class on the body in a more React-friendly way.
     document
@@ -21,30 +22,22 @@ class Nav extends React.Component {
       .classList.toggle('menu-is-open')
   }
 
-  closeMenu() {
+  closeMenu = function() {
     this.setState({
-      open: false,
-    })
+      open: false
+    });
   }
 
   navItems = [
     {
-      name: 'Features',
-      path: '/features',
+      name: 'KYT',
+      path: '/',
     },
     {
-      name: 'How It Works',
-      path: '/how-it-works',
-    },
-    {
-      name: 'Documentation',
-      path: '/docs',
-    },
-    {
-      name: 'Contact',
-      path: '/contact',
-    },
-  ]
+      name: 'Reactor',
+      path: '/'
+    }
+  ];
 
   render() {
     return (
@@ -64,7 +57,7 @@ class Nav extends React.Component {
           <nav className="Nav__list">
             {this.navItems.map(item => (
               <Link
-                key={item.path}
+                key={item.name}
                 className="Nav__item"
                 to={item.path}
                 onClick={this.closeMenu}
@@ -80,4 +73,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav
+export default Nav;

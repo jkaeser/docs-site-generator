@@ -1,4 +1,4 @@
-@import "../../sass-utils/globals";
+@import "../../../sass-utils/globals";
 
 .hidden {
   @include visually-hidden;
@@ -33,7 +33,7 @@
     .line {
       width: 30px;
       height: 3px;
-      background-color: $black;
+      background-color: $white;
       display: block;
       margin: 6px auto;
       transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
@@ -85,7 +85,7 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    background-color: $bluegreen-darker;
+    background-color: $c-2;
     padding: 3rem;
 
     @include breakpoint($bp-768) {
@@ -107,7 +107,7 @@
     &:hover,
     &:active,
     &:focus {
-      border-color: $bluegreen-light;
+      border-color: $c-5;
     }
 
     + .Nav__item {
@@ -117,14 +117,7 @@
     @include breakpoint($bp-768) {
       font-size: 0.8rem;
       font-weight: 700;
-      color: $grey-dark;
       text-align: center;
-
-      &:hover,
-      &:active,
-      &:focus {
-        color: $black;
-      }
 
       + .Nav__item {
         margin-left: 2.5rem;
