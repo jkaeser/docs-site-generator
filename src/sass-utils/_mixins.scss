@@ -229,3 +229,10 @@
 @mixin outline {
   outline: 4px solid $c-5;
 }
+
+@mixin fa-svg-fix {
+  &.svg-inline--fa {
+    width: 1em;
+    height: 1em;
+  }
+}

@@ -5,6 +5,8 @@
   position: relative;
 
   &__icon {
+    @include fa-svg-fix;
+
     position: absolute;
     left: 1rem;
     top: 18px;

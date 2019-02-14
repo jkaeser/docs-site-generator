@@ -22,7 +22,9 @@ export class GridItem extends React.Component {
     return (
       <div className='Grid__item'>
         <Link to={this.props.path}>
-          <FontAwesomeIcon icon={this.props.icon} />
+          <FontAwesomeIcon
+            icon={this.props.icon}
+          />
           {this.props.title}
         </Link>
       </div>

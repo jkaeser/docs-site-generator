@@ -45,6 +45,8 @@
       }
 
       svg {
+        @include fa-svg-fix;
+
         margin-bottom: 1rem;
       }
     }

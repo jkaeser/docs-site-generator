@@ -47,7 +47,10 @@ export default class Search extends React.Component {
               <label htmlFor="searchInput" className="hidden">
                 Search guides
               </label>
-              <FontAwesomeIcon icon="search" className="Search__icon" />
+              <FontAwesomeIcon
+                icon="search"
+                className="Search__icon"
+              />
               <input
                 type="text"
                 placeholder="Search guides..."
