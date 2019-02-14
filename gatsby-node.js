@@ -29,7 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
           context: {}
         });
       }
-      else {
+      else if (node.frontmatter.path) {
         createPage({
           path: node.frontmatter.path,
           component: path.resolve(`src/templates/docs/index.js`),
