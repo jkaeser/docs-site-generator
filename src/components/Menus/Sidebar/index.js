@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import { menuTreeFromRawData, menuGetCurrentSection } from '../menu.js'
+import { Menu } from '../menu.js'
 import './Sidebar.scss';
 
 export default class Sidebar extends React.Component {
@@ -51,7 +51,9 @@ export default class Sidebar extends React.Component {
         `}
         render={data => (
           <>
-            {this.renderMenu(menuGetCurrentSection(menuTreeFromRawData(data)))}
+            {this.renderMenu(
+              new Menu(data).getCurrentSection()
+            )}
           </>
         )}
       />

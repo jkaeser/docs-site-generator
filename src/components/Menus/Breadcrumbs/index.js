@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import * as Utils from '../../../js-utils/utils'
-import { menuFormatData } from '../menu.js'
+import { Menu } from '../menu.js'
 import './Breadcrumbs.scss'
 
 /**
@@ -84,7 +84,7 @@ class Breadcrumbs extends React.Component {
         render={data => (
           <nav aria-label="Breadcrumb">
             <ul className="Breadcrumbs">
-              {this.buildCrumbs(menuFormatData(data.allMarkdownRemark.edges))}
+              {this.buildCrumbs(new Menu(data).nodes)}
             </ul>
           </nav>
         )}
