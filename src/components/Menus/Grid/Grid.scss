@@ -51,4 +51,10 @@
       }
     }
   }
+
+  &__item-icon {
+    @include breakpoint($bp-768) {
+      height: 1.75em;
+    }
+  }
 }

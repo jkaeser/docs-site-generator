@@ -26,8 +26,8 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       'b'
-      'c'
       's'
+      'c'
     ;
 
     @include breakpoint($bp-768) {
@@ -42,19 +42,29 @@
 
   &__breadcrumb {
     grid-area: b;
-    padding: 2rem;
+    padding: 2rem 1.75rem;
+    margin-top: $header-height;
 
     @include breakpoint($bp-768) {
-      padding: 2rem 3rem;
+      padding: 2rem;
+      margin-top: 0;
     }
   }
 
   &__sidebar {
     grid-area: s;
-    margin: 2rem;
+    margin: 0 2rem 2rem;
 
     @include breakpoint($bp-768) {
       margin: 0;
+    }
+
+    .Search {
+      &__input {
+        @include breakpoint($bp-768) {
+          font-size: $fs-base;
+        }
+      }
     }
   }
 

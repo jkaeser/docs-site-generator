@@ -1,16 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, StaticQuery, graphql } from 'gatsby'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Menu } from '../menu.js'
 import './Sidebar.scss';
 
 export default class Sidebar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { open: false }
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
       path: PropTypes.string,
       title: PropTypes.string
     })),
   };
+
+  toggleMenu = function() {
+    this.setState(prevState => ({
+      open: !prevState.open,
+    }));
+  }
 
   renderItem = function(item) {
     return (
@@ -29,10 +42,21 @@ export default class Sidebar extends React.Component {
   }
 
   renderMenu = function(data) {
+    const open = this.state.open ? 'open' : '';
+
     return (
-      <nav className="Sidebar">
-        <span className="Sidebar__intro">In this guide:</span>
-        <ul className="Sidebar__list">
+      <nav className={`Sidebar ${open}`}>
+        <div className="Sidebar__intro">
+          <div className="Sidebar__intro-text">In this guide:</div>
+          <button
+            className={`Sidebar__toggle ${open}`}
+            onClick={this.toggleMenu}
+          >
+            <span className="hidden">Expand menu</span>
+            <FontAwesomeIcon icon="chevron-down" />
+          </button>
+        </div>
+        <ul className={`Sidebar__list ${open}`}>
           {data.map(item => (
             this.renderItem(item)
           ))}

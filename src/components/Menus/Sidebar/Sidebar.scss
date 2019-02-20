@@ -1,44 +1,104 @@
 @import "../../../sass-utils/globals";
 
 .Sidebar {
-  background: $grey-light;
-  padding: 1rem;
   border-radius: $border-radius;
+  background: $grey-light;
+
+  &__intro {
+    position: relative;
+    color: $white;
+    font-family: $f-secondary;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    padding: .5rem 1rem;
+    background: $c-1-translucent;
+  }
+
+  &__toggle {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: $white;
+    background: transparent;
+    font-size: 1.5rem;
+    text-align: right;
+
+    @include breakpoint($bp-768) {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+      color: $c-5;
+    }
+
+    > svg {
+      transition: all $transition-timing $transition-curve;
+      margin-right: 1rem;
+    }
+
+    &.open {
+      svg {
+        transform: rotate(-180deg);
+      }
+    }
+  }
 
   &__list {
+    padding: 0 1rem 1rem;
     list-style: none;
     margin: 0;
-    padding: 0;
+    display: none;
+    animation: .3s open;
 
+    @include breakpoint($bp-768) {
+      display: block;
+    }
+
+    @keyframes open {
+      0% {
+        display: block;
+        height: 0px;
+        opacity: 0;
+      }
+
+      50% {
+        height: 50%;
+      }
+
+      100% {
+        height: auto;
+        opacity: 1;
+      }
+    }
+
+    &.open {
+      display: block;
+    }
+
+    // Default size
+    li > a {
+      font-size: $fs-tiny;
+      font-weight: 400;
+    }
+
+    // Top level size
     > li {
       > a {
         font-size: $fs-smaller;
         font-weight: 700;
       }
 
-      > ul > li {
-        a {
-          font-weight: 500;
-        }
-
-        > ul > li {
-          > a {
-            font-size: $fs-tiny;
-          }
-        }
+      // Second level size
+      > ul > li > a {
+        font-size: $fs-base;
+        font-weight: 500;
       }
     }
-  }
-
-  &__intro {
-    display: block;
-    color: $white;
-    font-family: $f-secondary;
-    letter-spacing: 1.2px;
-    font-weight: 600;
-    margin: -1rem -1rem 1rem -1rem;
-    padding: .5rem 1rem;
-    background: $c-1-translucent;
   }
 
   &__item {
@@ -51,4 +111,8 @@
     margin-left: 1.5rem;
     padding-left: 0;
   }
+}
+
+.hidden {
+  @include visually-hidden;
 }

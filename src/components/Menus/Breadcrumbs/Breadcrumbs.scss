@@ -11,9 +11,21 @@
   display: inline-block;
   color: $c-1-translucent;
   font-weight: 500;
+  margin-left: .25rem;
 
   a {
+    display: inline-block;
+    line-height: 1;
     font-weight: 600;
+    padding: .5rem 1rem;
+    margin-bottom: .5rem;
+    background-color: $grey-light;
+    border-radius: $border-radius;
+
+    @include breakpoint($bp-768) {
+      padding: 0;
+      background-color: initial;
+    }
   }
 
   &::after {
@@ -24,9 +36,5 @@
 
   &:last-of-type::after {
     content: '';
-  }
-
-  + .Crumb {
-    margin-left: .25rem;
   }
 }
