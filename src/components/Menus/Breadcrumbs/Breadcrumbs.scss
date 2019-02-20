@@ -21,10 +21,26 @@
     margin-bottom: .5rem;
     background-color: $grey-light;
     border-radius: $border-radius;
+    border-bottom: 1px solid transparent;
+    transition: all $transition-timing $transition-curve;
+
+    &:active,
+    &:hover {
+      border-color: transparent;
+      background-color: $grey;
+    }
 
     @include breakpoint($bp-768) {
+      display: inline;
       padding: 0;
       background-color: initial;
+      border-radius: 0;
+
+      &:active,
+      &:hover {
+        border-color: $c-1;
+        background-color: initial;
+      }
     }
   }
 
