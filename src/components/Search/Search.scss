@@ -3,6 +3,7 @@
 .Search {
   margin-bottom: 1rem;
   position: relative;
+  z-index: 1;
 
   &__icon {
     @include fa-svg-fix;

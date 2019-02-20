@@ -12,6 +12,11 @@
     font-weight: 600;
     padding: .5rem 1rem;
     background: $c-1-translucent;
+    border-radius: $border-radius;
+
+    @include breakpoint($bp-768) {
+      border-radius: $border-radius $border-radius 0 0;
+    }
   }
 
   &__toggle {
@@ -37,6 +42,8 @@
     }
 
     > svg {
+      @include fa-svg-fix;
+
       transition: all $transition-timing $transition-curve;
       margin-right: 1rem;
     }
