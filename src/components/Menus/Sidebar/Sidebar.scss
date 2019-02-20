@@ -24,6 +24,7 @@
     width: 100%;
     color: $white;
     background: transparent;
+    border: none;
     font-size: 1.5rem;
     text-align: right;
 
@@ -32,7 +33,6 @@
     }
 
     &:focus {
-      outline-offset: -1px;
       color: $c-5;
     }
 
