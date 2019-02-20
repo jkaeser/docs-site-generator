@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as Utils from '../../js-utils/utils';
 
-const MENU_ITEM_FALLBACK_WEIGHT = 99;
+const MENU_NODE_FALLBACK_WEIGHT = 99;
 
 /**
  * Creates a new Menu.
@@ -31,8 +31,12 @@ Menu.prototype.getCurrentSection = function() {
   let section = [];
 
   this.tree.forEach(function(node) {
-    if (pathParts[0] === Utils.stripSlashes(node.path)) {
-      section.push(node);
+    let pathCompare = '';
+    for (let i = 0; i < pathParts.length; i++) {
+      pathCompare += '/' + pathParts[i];
+      if (Utils.stripSlashes(pathCompare) === Utils.stripSlashes(node.path)) {
+        section.push(node);
+      }
     }
   })
 
@@ -101,8 +105,8 @@ function _menuAddToTree(node, tree) {
   for (let i = 0 ; i < tree.length ; i++) {
     let treeNode = tree[i];
 
-     // If the entire treeNode's path is equal to the first portion of the
-     // node's path, we know this node is a child of the treeNode.
+    // If the entire treeNode's path is equal to the first portion of the
+    // node's path, we know this node is a child of the treeNode.
     if (node.path.indexOf(treeNode.path + '/') === 0) {
       _menuAddToTree(node, treeNode.children);
       return;
@@ -115,8 +119,8 @@ function _menuAddToTree(node, tree) {
     title: node.title || "",
     path: node.path || "",
     id: node.id || "",
-    weight: node.weight !== null ? node.weight : MENU_ITEM_FALLBACK_WEIGHT,
-    icon: node.icon || "",
+    weight: node.weight !== null ? node.weight : MENU_NODE_FALLBACK_WEIGHT,
+    icon: node.icon || null,
     children: []
   });
 }
