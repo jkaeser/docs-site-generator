@@ -102,8 +102,13 @@ def add_content(r, manifest):
     # Include information about this repo in the manifest
     manifest[r["name"]] = {}
     repo_details = manifest[r["name"]]
-    repo_details["commit"] = subprocess.Popen("git rev-parse HEAD", stdout=subprocess.PIPE, shell=True).communicate()[0]
+
+    # Commit hash
+    commit = subprocess.Popen("git rev-parse HEAD", stdout=subprocess.PIPE, shell=True).communicate()[0]
+    repo_details["commit"] = commit.replace("\n", "")
+    # Date stamp
     repo_details["createdAt"] = datetime.datetime.now().isoformat()
+
 
 # Remove content from a repository
 def remove_content(r, manifest):
