@@ -71,7 +71,7 @@
   &__content {
     grid-area: c;
     font-size: $fs-smaller;
-    margin: 0 2rem;
+    margin: 0 2rem 2rem;
     color: $c-2;
 
     @include breakpoint($bp-768) {
