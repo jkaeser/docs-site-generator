@@ -11,6 +11,7 @@ import sys
 import os
 import shutil
 import json
+import datetime
 import contextlib
 import colorama
 from contextlib import contextmanager
@@ -68,7 +69,7 @@ def shell(input):
 
 
 # Add content from a repository
-def add_content(r):
+def add_content(r, manifest):
     # Create directory and cd into it
     if not os.path.exists(r["name"]):
         print("Making new directory named " + r["name"])
@@ -98,9 +99,14 @@ def add_content(r):
     # Check out selected branch or tag
     shell("git checkout " + branch)
 
+    # Include information about this repo in the manifest
+    manifest[r["name"]] = {}
+    repo_details = manifest[r["name"]]
+    repo_details["commit"] = subprocess.Popen("git rev-parse HEAD", stdout=subprocess.PIPE, shell=True).communicate()[0]
+    repo_details["createdAt"] = datetime.datetime.now().isoformat()
 
 # Remove content from a repository
-def remove_content(r):
+def remove_content(r, manifest):
     remove = request_remove(r)
 
     # Handle incorrect inputs
@@ -125,12 +131,12 @@ def content_from_repo(r, manifest):
         use = request_include(r)
 
     if use.lower() == "y":
-        add_content(r)
+        add_content(r, manifest)
         # Go back a level for any other repos that will be added
         os.chdir("..")
     if use.lower() == "n":
         if os.path.exists(r["name"]):
-            remove_content(r)
+            remove_content(r, manifest)
 
 
 # Define the script runner
@@ -145,7 +151,8 @@ def get_content():
         manifest = {}
         for r in repos:
             content_from_repo(r, manifest)
-
+    with cd("../static"):
+        file = open('content-manifest.json', 'w').write(json.dumps(manifest))
 
 # Run the script
 get_content()
