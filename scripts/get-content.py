@@ -1,9 +1,10 @@
 #!/usr/bin/python
 
 # Install instructions:
-# On mac, install pip with sudo easy_install pip
-# On debian, apt-get install pip
-# Then run sudo pip install requests
+# See https://pip.pypa.io/en/stable/installing/
+# Then run:
+#   - sudo pip install colorama
+#   - sudo pip install requests
 
 import subprocess
 import sys
@@ -22,6 +23,7 @@ except:
   subprocess.call('pip install requests', shell=True)
   import requests
 
+# Define content repositories
 repos = [
     {
         "name": "product-A",
@@ -46,8 +48,9 @@ def cd(newdir):
     finally:
         os.chdir(prevdir)
 
+# Helper functions for user input
 def request_include(r):
-    return raw_input(Fore.GREEN + "\nInclude content from " + r["name"] + "? [y/n]: ")
+    return raw_input(Fore.GREEN + "\nInclude content from " + r["name"] + "? [y/n]: ").strip()
 
 def request_branch():
     return raw_input(Fore.GREEN + "Which branch or tag would you like to check out (defaults to master)? ")
@@ -55,6 +58,11 @@ def request_branch():
 def request_remove(r):
     return raw_input(Fore.YELLOW + "It looks like " + r["name"] + " has already been added. Would you like to remove it? [y/n]: ")
 
+# Helper that makes code easier to read
+def shell(input):
+    subprocess.call(input, shell=True)
+
+#
 def add_repo(r):
     # Prompt user to include content from this repo or not
     use = request_include(r)
@@ -64,28 +72,27 @@ def add_repo(r):
         print(use + " is not a valid response. Please enter \"y\" or \"n\"")
         use = request_include(r)
 
-    # Conditionally download content
     if use.lower() == "y":
-        # Create directory
+        # Create directory and cd into it
         if not os.path.exists(r["name"]):
             print("Making new directory named " + r["name"])
-            subprocess.call("mkdir " + r["name"] , shell=True)
+            shell("mkdir " + r["name"])
         os.chdir(r["name"])
 
         # Initialize repo and grab branches
         if os.path.exists(".git"):
             print("Git repo already initialized.\n")
-            subprocess.call("git fetch --all", shell=True)
+            shell("git fetch --all")
 
             print(Fore.CYAN + "Branches:")
-            subprocess.call("git branch --list -a", shell=True)
+            shell("git branch --list -a")
             print(Fore.CYAN + "\nTags:")
-            subprocess.call("git tag --list", shell=True)
+            shell("git tag --list")
 
         else:
-            subprocess.call("git init", shell=True)
-            subprocess.call("git remote add origin " + r["git"], shell=True)
-            subprocess.call("git fetch --all", shell=True)
+            shell("git init")
+            shell("git remote add origin " + r["git"])
+            shell("git fetch --all")
 
         # Request branch
         branch = request_branch()
@@ -95,17 +102,17 @@ def add_repo(r):
             print "Defaulting to master branch."
 
         # Check out selected branch or tag
-        subprocess.call("git checkout " + branch, shell=True)
-        print "\n"
+        shell("git checkout " + branch)
 
-        # Go back a level for any other repos that will be added.
+        # Go back a level for any other repos that will be added
         os.chdir("..")
 
     if use.lower() == "n":
-        # Present opportunity to remove content.
+        # Present opportunity to remove content
         if os.path.exists(r["name"]):
             remove = request_remove(r)
 
+            # Handle incorrect inputs
             while remove.lower() not in ["y", "n"]:
                 print(use + " is not a valid response. Please enter \"y\" or \"n\"")
                 remove = request_remove(r)
