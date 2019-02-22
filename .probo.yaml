@@ -15,7 +15,7 @@ steps:
       - 'yarn install'
       - 'echo "Downloading content...\n"'
       - 'cd src/pages/docs/'
-      - 'git clone https://github.com/jkaeser/docs-content.git --branch demo-content .'
+      - 'git clone https://github.com/jkaeser/docs-content.git --branch demo-content demo-content'
       - 'echo "Building site...\n"'
       - 'cd /src'
       - './node_modules/.bin/gatsby build'
