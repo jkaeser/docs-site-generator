@@ -16,6 +16,7 @@
   }
 
   &__input {
+    font-family: $f-secondary;
     letter-spacing: 1px;
     max-width: none;
     width: 100%;
@@ -104,6 +105,8 @@
 
   &__result {
     a {
+      color: $c-1;
+      border-bottom: none;
       display: block;
       background-color: $grey-light;
       padding: 1rem;

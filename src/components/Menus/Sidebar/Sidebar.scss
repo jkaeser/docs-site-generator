@@ -88,10 +88,11 @@
       display: block;
     }
 
-    // Default size
+    // Defaults
     li > a {
       font-size: $fs-tiny;
       font-weight: 400;
+      color: $c-1;
     }
 
     // Top level size

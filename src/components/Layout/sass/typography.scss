@@ -1,7 +1,5 @@
 @import "../../../sass-utils/globals";
 
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto+Condensed:300,400,700,900');
-
 h1 {
   @include h1;
 }
@@ -15,19 +13,22 @@ h3 {
 }
 
 h4 {
-  font-size: $fs-base;
+  @include h4;
 }
 
 h5 {
-  font-size: $fs-tiny;
+  @include h5;
+}
+
+h6 {
+  @include h6;
 }
 
 html {
-  font-family: $f-primary;
-  font-weight: 300;
+  font-family: $f-secondary;
+  font-weight: 400;
   font-size: 14px;
   line-height: 2rem;
-  letter-spacing: 1px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -37,13 +38,5 @@ html {
 }
 
 a {
-  display: inline;
-  color: $c-1;
-  text-decoration: none;
-  font-weight: 700;
-
-  &:hover,
-  &:active {
-    border-bottom: 1px solid $c-1;
-  }
+  @include a;
 }

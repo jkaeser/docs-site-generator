@@ -1,22 +1,25 @@
 // Colors
 $c-0: #222639;
-$c-1: #2F3A45;
+$c-1: #214255;
 $c-1-translucent: rgba(47, 58, 69, 0.8);
-$c-2: #617688;
-$c-3: #99A6B2;
-$c-4: #40C2EA;
-$c-5: #FD9D30;
+$c-2: #7E878C;
+$c-3: #59798B;
+$c-4: #E1EDF5;
+$c-5: #F7941E;
 
 $white: #fff;
 $grey-light: #eeeded;
 $grey: #cacaca;
-$grey-mid: $c-3;
 $grey-dark: #8a8a8a;
 $black: #252525;
 
+
 // Fonts
-$f-primary: "museo-sans", "Raleway", "Helvetica Neue", Helvetica, sans-serif;
-$f-secondary: 'Roboto Condensed', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700|Overpass+Mono:300|Roboto:300,400,700,900');
+
+$f-primary: 'Raleway', 'Helvetica Neue', Helvetica, sans-serif;
+$f-secondary: 'Roboto', sans-serif;
+$f-tertiary: 'Overpass Mono', monospace;
 
 $fs-tiny: .85rem;
 $fs-base: 1rem;
@@ -24,6 +27,7 @@ $fs-smaller: 1.125rem;
 $fs-small: 1.25rem;
 $fs-medium: 1.5rem;
 $fs-large: 1.75rem;
+$fs-larger: 2rem;
 $fs-extra-large: 2.25rem;
 $fs-huge: 3rem;
 
