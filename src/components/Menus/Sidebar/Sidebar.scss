@@ -90,7 +90,7 @@
 
     // Defaults
     li > a {
-      display: block;
+      display: inline-block;
       font-size: $fs-tiny;
       font-weight: 400;
       color: $c-1;
@@ -101,6 +101,7 @@
       }
 
       @include breakpoint($bp-768) {
+        display: inline;
         padding: 0;
       }
     }
