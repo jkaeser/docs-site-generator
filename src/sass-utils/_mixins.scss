@@ -242,15 +242,88 @@
     @include breakpoint($bp-540) {
       margin-left: 3rem;
     }
+
+    em {
+      font-style: normal;
+    }
   }
 
   h1,
   h2,
   h3,
   h4,
-  h5 {
+  h5,
+  h6 {
     margin: 1.2rem 0;
     color: $c-1;
+  }
+
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: left;
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+  th {
+    font-family: $f-primary;
+    color: $c-1;
+  }
+
+  td {
+    font-size: $fs-base;
+  }
+
+  $table-border: 1px solid $c-4;
+
+  th,
+  td {
+    padding: .5rem;
+    border: $table-border;
+  }
+
+  tr {
+    &:first-of-type {
+      td, th {
+        border-top: 0;
+      }
+    }
+
+    &:last-of-type {
+      td, th {
+        border-bottom: 0;
+      }
+    }
+
+    td, th {
+      &:first-of-type {
+        border-left: 0;
+      }
+      &:last-of-type {
+        border-right: 0;
+      }
+    }
+  }
+
+  thead ~ tbody {
+    tr {
+      &:first-of-type {
+        td {
+          border-top: $table-border;
+        }
+      }
+    }
+  }
+
+  sup {
+    vertical-align: super;
+    font-size: $fs-tiny;
+  }
+
+  .task-list-item {
+    list-style: none;
+    margin-left: -2.5rem;
   }
 }
 
