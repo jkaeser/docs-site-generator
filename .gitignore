@@ -8,6 +8,7 @@ public/
 yarn-error.log
 .idea
 .env
-
+static/content-manifest.json
+src/pages/docs/
 # Ignore for now
 README.md

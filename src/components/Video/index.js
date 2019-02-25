@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import * as Utils from '../../js-utils/utils.js';
 import './Video.scss';
 
 export default class Video extends React.Component {
@@ -22,7 +23,8 @@ export default class Video extends React.Component {
 
     if (files !== null) {
       files.edges.forEach(function(item) {
-        if (self.props.src === item.node.relativePath) {
+        let split = Utils.splitPath(item.node.relativePath);
+        if (self.props.src === split[split.length - 1]) {
           src = item.node.publicURL;
         }
       })

@@ -39,7 +39,7 @@ export default class DocsPage extends React.Component {
     const description = this.state.description
 
     return (
-      <Layout color="4">
+      <Layout>
         <Helmet title={`${frontmatter.title} | Chainalysis Documentation`}>
           <meta name="description" content={description} />
         </Helmet>
