@@ -66,6 +66,13 @@
         }
       }
     }
+
+    .Sidebar {
+      @include breakpoint($bp-768) {
+        position: sticky;
+        top: 1rem;
+      }
+    }
   }
 
   &__content {
