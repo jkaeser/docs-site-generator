@@ -110,13 +110,11 @@
     > li {
       > a {
         font-size: $fs-smaller;
-        font-weight: 700;
       }
 
       // Second level size
       > ul > li > a {
         font-size: $fs-base;
-        font-weight: 500;
       }
     }
   }
@@ -125,6 +123,12 @@
     list-style: none;
     line-height: 1.2;
     margin-top: 1rem;
+
+    &.active > a {
+      font-weight: 700;
+      color: $c-1;
+      border-bottom: none;
+    }
   }
 
   &__children {

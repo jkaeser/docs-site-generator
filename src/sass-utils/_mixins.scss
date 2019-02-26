@@ -41,7 +41,6 @@
   font-size: $fs-larger;
   font-family: $f-primary;
   line-height: 2.5rem;
-  letter-spacing: 2px;
   margin: 0.5rem 0;
   font-weight: 500;
 }
@@ -65,7 +64,7 @@
 }
 
 @mixin h6 {
-  font-size: $fs-smaller;
+  font-size: $fs-small;
   font-family: $f-primary;
   color: $c-2;
   font-style: italic;
@@ -190,6 +189,11 @@
   ol {
     padding-left: 3rem;
     margin: 1rem 0;
+    line-height: 1.4;
+
+    li + li {
+      padding-top: .75rem;
+    }
   }
 
   ul {
@@ -256,6 +260,18 @@
   h6 {
     margin: 2rem 0 1.2rem;
     color: $c-1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: $c-1;
+  }
+
+  h6 {
+    color: $c-2;
   }
 
   table {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Menu } from '../menu.js'
+import * as Utils from '../../../js-utils/utils.js'
 import './Sidebar.scss';
 
 export default class Sidebar extends React.Component {
@@ -25,9 +26,23 @@ export default class Sidebar extends React.Component {
     }));
   }
 
+  matchesPath = function(string) {
+    let activeClass = '';
+    let windowPath = Utils.safeWindowPath();
+
+    console.log(string);
+    console.log(windowPath);
+
+    if (Utils.stripSlashes(windowPath) === Utils.stripSlashes(string)) {
+      activeClass = 'active';
+    }
+
+    return activeClass;
+  }
+
   renderItem = function(item) {
     return (
-      <li key={`sb-${item.id}`} className="Sidebar__item">
+      <li key={`sb-${item.id}`} className={`Sidebar__item ${this.matchesPath(item.path)}`}>
         <Link to={item.path}>{item.title}</Link>
 
         {item.children.length !== 0 &&
