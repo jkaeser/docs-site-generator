@@ -12,14 +12,14 @@ const MENU_NODE_FALLBACK_WEIGHT = 99;
 export function Menu(data) {
   this.nodes = _menuFormatData(data.allMarkdownRemark.edges);
   this.tree = _menuCreateTree(this.nodes);
-}
+};
 
 /**
  * See _menuAddToTree().
  */
 Menu.prototype.addItem = function(node) {
   _menuAddToTree(node, this.tree);
-}
+};
 
 /**
  * Extract a portion of a menu from the tree based on the current page path.
@@ -38,10 +38,10 @@ Menu.prototype.getCurrentSection = function() {
         section.push(node);
       }
     }
-  })
+  });
 
   return section;
-}
+};
 
 /**
  * Sort menu items by path length.
@@ -52,7 +52,7 @@ function _menuSortByPath(nodes) {
   return nodes.sort(function(a, b) {
     return a.path.split('/').length - b.path.split('/').length;
   });
-}
+};
 
 /**
  * Formats menu data from GraphQL to work with _menuCreateTree().
@@ -69,7 +69,7 @@ function _menuFormatData(data) {
 
   // Top level items must appear first for _menuCreateTree() to work properly.
   return _menuSortByPath(formatted);
-}
+};
 
 /**
  * Sort menu items by weight. If weights match, sort alphabetically.
@@ -93,7 +93,7 @@ function _menuSortByWeight(tree) {
       }
     }
   });
-}
+};
 
 /**
  * Adds a menu item to the tree at the right position.
@@ -123,7 +123,7 @@ function _menuAddToTree(node, tree) {
     icon: node.icon || null,
     children: []
   });
-}
+};
 
 /**
  * Creates a sorted menu tree out of formatted GraphQL data.
@@ -137,7 +137,7 @@ function _menuCreateTree(nodes) {
     _menuAddToTree(node, tree);
   }
   return _menuSortByWeight(tree);
-}
+};
 
 export const dynamicMenuQuery = graphql`
   fragment dynamicMenuQuery on Query {

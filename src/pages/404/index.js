@@ -1,11 +1,11 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../../components/Layout'
-import PageTitle from '../../components/PageTitle'
-import Search from '../../components/Search'
-import Helmet from 'react-helmet'
-import { Link } from 'gatsby'
-import './404.scss'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
+import Search from '../../components/Search';
+import Helmet from 'react-helmet';
+import { Link } from 'gatsby';
+import './404.scss';
 
 const NotFoundPage = ({ data }) => (
   <Layout>
@@ -26,9 +26,9 @@ const NotFoundPage = ({ data }) => (
       <Search data={data.siteSearchIndex} />
     </section>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;
 
 export const query = graphql`
   query FourOhFourQuery {

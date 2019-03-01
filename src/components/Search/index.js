@@ -18,14 +18,14 @@ export default class Search extends React.Component {
     };
     this.clearSearch = this.clearSearch.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
-  }
+  };
 
   handleKeydown = (e) => {
     // Do not clear input when enter/return key is pressed.
     if (e.keyCode === 13) {
       e.preventDefault();
     }
-  }
+  };
 
   clearSearch = (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ export default class Search extends React.Component {
       query: ``,
       results: [],
     })
-  }
+  };
 
   render() {
     const hasQuery = this.state.query.length !== 0 ? 'hasQuery' : '';
@@ -88,11 +88,11 @@ export default class Search extends React.Component {
         )}
       </FocusWithin>
     );
-  }
+  };
 
   getOrCreateIndex = function() {
     // Return index, or create an elastic lunr index and hydrate with graphql query results
-  return this.index ? this.index : Index.load(this.props.data.index);
+    return this.index ? this.index : Index.load(this.props.data.index);
   }
 
   search = (event) => {
@@ -115,8 +115,8 @@ export default class Search extends React.Component {
         ref,
         }) => this.index.documentStore.getDoc(ref)),
     });
-  }
-}
+  };
+};
 
 // Graphql query used to retrieve the serialized search index.
 export const query = graphql`
@@ -125,4 +125,4 @@ export const query = graphql`
       index
     }
   }
-`;
+`

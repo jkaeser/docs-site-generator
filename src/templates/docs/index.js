@@ -1,23 +1,23 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../../components/Layout'
-import Helmet from 'react-helmet'
-import Search from '../../components/Search'
-import Sidebar from '../../components/Menus/Sidebar'
-import Breadcrumbs from '../../components/Menus/Breadcrumbs'
-import Video from '../../components/Video'
-import './Docs.scss'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../../components/Layout';
+import Helmet from 'react-helmet';
+import Search from '../../components/Search';
+import Sidebar from '../../components/Menus/Sidebar';
+import Breadcrumbs from '../../components/Menus/Breadcrumbs';
+import Video from '../../components/Video';
+import './Docs.scss';
 
 function stripHtml(html) {
   var stripped = new DOMParser().parseFromString(html, 'text/html')
   return stripped.body.textContent || ''
-}
+};
 
 function firstParagraph(input) {
   let regex = /[<p>].*[</p>]/
   var match = regex.exec(input)
   return match !== null ? match : ''
-}
+};
 
 export default class DocsPage extends React.Component {
   constructor(props) {
@@ -25,13 +25,13 @@ export default class DocsPage extends React.Component {
     this.state = {
       description: '',
     }
-  }
+  };
 
   componentDidMount() {
     this.setState({
       description: stripHtml(firstParagraph(this.props.data.pageMarkdown.html)),
     })
-  }
+  };
 
   render() {
     const { frontmatter, html: body } = this.props.data.pageMarkdown
@@ -70,8 +70,8 @@ export default class DocsPage extends React.Component {
         </div>
       </Layout>
     )
-  }
-}
+  };
+};
 
 export const docsPageQuery = graphql`
   query DocsPage($path: String!) {

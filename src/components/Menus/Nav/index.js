@@ -8,7 +8,7 @@ class Nav extends React.Component {
     this.state = { open: false }
     this.toggleMenu = this.toggleMenu.bind(this)
     this.closeMenu = this.closeMenu.bind(this)
-  }
+  };
 
   toggleMenu = function() {
     this.setState(prevState => ({
@@ -19,14 +19,14 @@ class Nav extends React.Component {
     document
       .getElementsByTagName('body')
       .item(0)
-      .classList.toggle('menu-is-open')
-  }
+      .classList.toggle('menu-is-open');
+  };
 
   closeMenu = function() {
     this.setState({
       open: false
     });
-  }
+  };
 
   navItems = [
     {
@@ -71,6 +71,6 @@ class Nav extends React.Component {
       </div>
     )
   }
-}
+};
 
 export default Nav;

@@ -1,24 +1,24 @@
-import React from 'react'
-import classnames from 'classnames'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import './Button.scss'
+import React from 'react';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import './Button.scss';
 
 class Button extends React.Component {
   static propTypes = {
     color: PropTypes.oneOf(['navy', 'white', 'gold']),
     link: PropTypes.string,
     attributes: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     color: 'white',
     link: null,
     attributes: null,
-  }
+  };
 
   render() {
-    var classes = classnames(`Button -${this.props.color}`)
+    var classes = classnames(`Button -${this.props.color}`);
 
     if (this.props.link !== null) {
       return (
@@ -37,7 +37,7 @@ class Button extends React.Component {
         </button>
       )
     }
-  }
-}
+  };
+};
 
-export default Button
+export default Button;

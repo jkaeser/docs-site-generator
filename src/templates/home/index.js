@@ -1,10 +1,10 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import Layout from '../../components/Layout'
-import PageTitle from '../../components/PageTitle'
-import Search from '../../components/Search'
-import Grid from '../../components/Menus/Grid'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
+import Search from '../../components/Search';
+import Grid from '../../components/Menus/Grid';
 import './Home.scss';
 
 export default class HomePage extends React.Component {
@@ -30,15 +30,14 @@ export default class HomePage extends React.Component {
         </section>
       </Layout>
     )
-  }
-}
+  };
+};
 
 export const homePageQuery = graphql`
   query HomePage($path: String!) {
     pageMarkdown: markdownRemark(frontmatter: { path: { eq: $path } }) {
       frontmatter {
         title
-        subtitle
       }
     }
     ...searchIndexQuery

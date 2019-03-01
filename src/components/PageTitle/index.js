@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './PageTitle.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import './PageTitle.scss';
 
 class PageTitle extends React.Component {
   static propTypes = {
     className: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     className: '',
-  }
+  };
 
   render() {
     return (
@@ -17,7 +17,7 @@ class PageTitle extends React.Component {
         {this.props.children}
       </div>
     )
-  }
-}
+  };
+};
 
-export default PageTitle
+export default PageTitle;

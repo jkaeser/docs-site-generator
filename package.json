@@ -45,6 +45,7 @@
   "scripts": {
     "develop": "./node_modules/.bin/gatsby develop",
     "demo": "./node_modules/.bin/gatsby build && ./node_modules/.bin/gatsby serve",
-    "build": "./node_modules/.bin/gatsby build"
+    "build": "./node_modules/.bin/gatsby build",
+    "serve": "./node_modules/.bin/gatsby serve"
   }
 }

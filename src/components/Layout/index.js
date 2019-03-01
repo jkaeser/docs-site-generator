@@ -12,11 +12,11 @@ import './sass/typography.scss';
 class Layout extends React.Component {
   static propTypes = {
     color: PropTypes.oneOf(['0', '1', '2', '3', '4']),
-  }
+  };
 
   static defaultProps = {
     color: '0',
-  }
+  };
 
   render() {
     return (
@@ -47,7 +47,7 @@ class Layout extends React.Component {
         )}
       />
     )
-  }
+  };
 };
 
 export default Layout;

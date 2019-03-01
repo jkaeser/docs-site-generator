@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql, Link } from 'gatsby'
-import * as Utils from '../../../js-utils/utils'
-import { Menu } from '../menu.js'
-import './Breadcrumbs.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql, Link } from 'gatsby';
+import * as Utils from '../../../js-utils/utils';
+import { Menu } from '../menu.js';
+import './Breadcrumbs.scss';
 
 /**
  * Represents a single breadcrumb
@@ -12,12 +12,12 @@ class Crumb extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     path: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     title: '',
     path: '',
-  }
+  };
 
   render() {
     let windowPath = Utils.safeWindowPath();
@@ -34,8 +34,8 @@ class Crumb extends React.Component {
         {crumbtitle}
       </li>
     )
-  }
-}
+  };
+};
 
 /**
  * Represents a series of breadcrumbs built from menu data
@@ -48,7 +48,7 @@ class Breadcrumbs extends React.Component {
    * @return {array}
    */
   buildCrumbs = function(data) {
-    let path = Utils.safeWindowPath()
+    let path = Utils.safeWindowPath();
     const pathParts = Utils.splitPath(path);
     let pathCompare = '';
 
@@ -71,7 +71,7 @@ class Breadcrumbs extends React.Component {
       })
     }
     return breadcrumbs
-  }
+  };
 
   render() {
     return (
@@ -90,7 +90,7 @@ class Breadcrumbs extends React.Component {
         )}
       />
     )
-  }
-}
+  };
+};
 
 export default Breadcrumbs;

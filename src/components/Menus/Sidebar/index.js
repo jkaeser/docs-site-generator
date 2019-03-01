@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, StaticQuery, graphql } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Menu } from '../menu.js'
-import * as Utils from '../../../js-utils/utils.js'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Menu } from '../menu.js';
+import * as Utils from '../../../js-utils/utils.js';
 import './Sidebar.scss';
 
 export default class Sidebar extends React.Component {
@@ -11,7 +11,7 @@ export default class Sidebar extends React.Component {
     super(props)
     this.state = { open: false }
     this.toggleMenu = this.toggleMenu.bind(this);
-  }
+  };
 
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
@@ -24,21 +24,18 @@ export default class Sidebar extends React.Component {
     this.setState(prevState => ({
       open: !prevState.open,
     }));
-  }
+  };
 
   matchesPath = function(string) {
     let activeClass = '';
     let windowPath = Utils.safeWindowPath();
-
-    console.log(string);
-    console.log(windowPath);
 
     if (Utils.stripSlashes(windowPath) === Utils.stripSlashes(string)) {
       activeClass = 'active';
     }
 
     return activeClass;
-  }
+  };
 
   renderItem = function(item) {
     return (
@@ -54,7 +51,7 @@ export default class Sidebar extends React.Component {
         }
       </li>
     )
-  }
+  };
 
   renderMenu = function(data) {
     const open = this.state.open ? 'open' : '';
@@ -78,7 +75,7 @@ export default class Sidebar extends React.Component {
         </ul>
       </nav>
     )
-  }
+  };
 
   render() {
     return (
@@ -97,5 +94,5 @@ export default class Sidebar extends React.Component {
         )}
       />
     )
-  }
-}
+  };
+};

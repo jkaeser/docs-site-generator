@@ -7,11 +7,11 @@ import './Video.scss';
 export default class Video extends React.Component {
   static propTypes = {
     src: PropTypes.string
-  }
+  };
 
   static defaultProps = {
     src: ''
-  }
+  };
 
   // Ideally we'd be able to filter the GraphQL query by passing it the 'src'
   // prop's value. However, string interpolations are not allowed in GraphQL
@@ -30,7 +30,7 @@ export default class Video extends React.Component {
       })
     }
     return src;
-  }
+  };
 
   renderVideo = function(data) {
     let src = this.matchVideoSrc(data);
@@ -42,7 +42,7 @@ export default class Video extends React.Component {
         />
       )
     }
-  }
+  };
 
   render() {
     return (
@@ -59,8 +59,8 @@ export default class Video extends React.Component {
         )}
       />
     )
-  }
-}
+  };
+};
 
 export const videoFileQuery = graphql`
   fragment videoFileQuery on Query {
@@ -73,4 +73,4 @@ export const videoFileQuery = graphql`
       }
     }
   }
-`;
+`

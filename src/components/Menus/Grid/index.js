@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Menu } from '../menu.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Menu } from '../menu.js';
 import './Grid.scss';
 
 export class GridItem extends React.Component {
@@ -10,13 +10,13 @@ export class GridItem extends React.Component {
     path: PropTypes.string,
     title: PropTypes.string,
     icon: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     path: '',
     title: '',
     icon: '',
-  }
+  };
 
   render() {
     return (
@@ -35,8 +35,8 @@ export class GridItem extends React.Component {
         </Link>
       </div>
     )
-  }
-}
+  };
+};
 
 export class Grid extends React.Component {
   render() {
@@ -61,7 +61,7 @@ export class Grid extends React.Component {
         )}
       />
     )
-  }
-}
+  };
+};
 
 export default Grid;

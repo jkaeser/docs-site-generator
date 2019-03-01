@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Nav from '../Menus/Nav'
-import logo from '../../img/logo.png'
-import './Header.scss'
+import React from 'react';
+import { Link } from 'gatsby';
+import Nav from '../Menus/Nav';
+import logo from '../../img/logo.png';
+import './Header.scss';
 
 const Header = () => (
   <header id="Header">
@@ -17,6 +17,6 @@ const Header = () => (
       <Nav />
     </div>
   </header>
-)
+);
 
-export default Header
+export default Header;

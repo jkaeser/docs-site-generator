@@ -14,7 +14,7 @@ export function stripSlashes(path) {
     path = path.slice(1, path.length)
   }
   return path
-}
+};
 
 /**
  * Returns global window object if valid or an empty string (e.g. Node env)
@@ -23,7 +23,7 @@ export function stripSlashes(path) {
 export function safeWindowPath() {
   let path = typeof window !== 'undefined' ? window.location.pathname : '';
   return path;
-}
+};
 
 /**
  * Split a path string into its component parts.
@@ -32,4 +32,4 @@ export function safeWindowPath() {
  */
 export function splitPath(path) {
   return path.split('/').filter(part => part !== '')
-}
+};
