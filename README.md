@@ -11,7 +11,7 @@
     - [Gatsby](#gatsby)
     - [Markdown](#markdown)
   - [Architectural Notes](#architectural-notes)
-    - [Docs Content](#docs-content)
+    - [How content is transformed into site pages](#how-content-is-transformed-into-site-pages)
     - [The menu system](#the-menu-system)
   - [Directory Structure](#directory-structure)
 
@@ -94,7 +94,7 @@ Includes images that are hardcoded into layouts or components.
 Includes JavaScript helper functions that are used in layouts or components.
 
 #### pages/
-Includes files that Gatsby will render into pages on the site. 
+Includes files that Gatsby will render into pages on the site.
 
 #### sass-utils/
 Includes Sass tools that are used in layouts or components.
