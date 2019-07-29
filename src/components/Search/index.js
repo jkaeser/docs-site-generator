@@ -35,6 +35,21 @@ export default class Search extends React.Component {
     })
   };
 
+  renderResult = (page) => {
+    // Do not render link to home page. We could prevent the home page from
+    // entering the index, but that causes issues when it is the only page
+    // node. Site builds fail when there is an empty index.
+    if (page.path !== '/') {
+      return (
+        <li key={page.id} className="Search__result">
+          <Link to={page.path}>
+            {page.title}
+          </Link>
+        </li>
+      )
+    }
+  }
+
   render() {
     const hasQuery = this.state.query.length !== 0 ? 'hasQuery' : '';
     const hasResults = this.state.results.length !== 0 ? 'hasResults' : '';
@@ -77,11 +92,7 @@ export default class Search extends React.Component {
               tabIndex='-1'
               >
               {this.state.results.map(page => (
-                <li key={page.id} className="Search__result">
-                  <Link to={page.path}>
-                    {page.title}
-                  </Link>
-                </li>
+                this.renderResult(page)
               ))}
             </ul>
           </div>
@@ -91,7 +102,8 @@ export default class Search extends React.Component {
   };
 
   getOrCreateIndex = function() {
-    // Return index, or create an elastic lunr index and hydrate with graphql query results
+    // Return index, or create an elastic lunr index and hydrate with graphql
+    // query results
     return this.index ? this.index : Index.load(this.props.data.index);
   }
 

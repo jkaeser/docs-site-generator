@@ -1,5 +1,24 @@
 const path = require('path');
 
+exports.sourceNodes = ({ actions, schema }) => {
+  actions.createTypes(`
+    type MarkdownRemarkFrontmatter {
+      demo: Boolean
+      home: Boolean
+      title: String
+      path: String
+      weight: Int
+      keywords: String
+      icon: String
+      video: String
+    }
+
+    type MarkdownRemark implements Node {
+      frontmatter: MarkdownRemarkFrontmatter
+    }
+  `);
+}
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 

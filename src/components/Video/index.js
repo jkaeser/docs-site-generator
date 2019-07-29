@@ -20,11 +20,15 @@ export default class Video extends React.Component {
     let self = this;
     let files = data.allFile;
     let src = null;
+    let splitSrcPath = Utils.splitPath(self.props.src);
 
     if (files !== null) {
       files.edges.forEach(function(item) {
-        let split = Utils.splitPath(item.node.relativePath);
-        if (self.props.src === split[split.length - 1]) {
+        let splitFilePath = Utils.splitPath(item.node.relativePath);
+
+        // The last part of the split paths will be the file name. If the file
+        // names are the same, we can send the public URL to the component.
+        if (splitSrcPath[splitSrcPath.length - 1] === splitFilePath[splitFilePath.length - 1]) {
           src = item.node.publicURL;
         }
       })
