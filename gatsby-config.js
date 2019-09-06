@@ -1,10 +1,12 @@
 const siteUrl = `https://docs.chainalysis.com`;
+const pathPrefix = process.env.GATSBY_PATH_PREFIX ? process.env.GATSBY_PATH_PREFIX : false;
 
 module.exports = {
   siteMetadata: {
     title: `Chainalysis Documentation`,
-    siteUrl: siteUrl,
+    siteUrl: siteUrl
   },
+  pathPrefix: pathPrefix,
   plugins: [
     {
       resolve: `gatsby-plugin-canonical-urls`,
