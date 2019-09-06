@@ -157,6 +157,53 @@
     max-width: 100%;
   }
 
+  > img:not(.gatsby-resp-image-image) {
+    margin: 3rem auto
+  }
+
+  div {
+    margin: 1rem 0;
+
+    + p {
+      margin-top: 1rem;
+    }
+  }
+
+  .align-left,
+  .align-right {
+    .gatsby-resp-image-background-image {
+      display: none !important;
+    }
+
+    img {
+      position: static;
+    }
+  }
+
+  .align-left {
+    float: left;
+    margin: 1rem 2rem 1rem 0;
+
+    .gatsby-resp-image-wrapper {
+      margin: 0 auto 0 0 !important;
+    }
+  }
+
+  .align-right {
+    float: right;
+    margin: 1rem 0 1rem 2rem;
+
+    .gatsby-resp-image-wrapper {
+      margin: 0 0 0 auto !important;
+    }
+  }
+
+  .borderless {
+    img {
+      border: 0;
+    }
+  }
+
   code,
   pre {
     background-color: $grey-light;

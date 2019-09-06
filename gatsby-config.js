@@ -65,7 +65,9 @@ module.exports = {
               maxWidth: 695,
               linkImagesToOriginal: true,
               quality: 100,
-              wrapperStyle: 'margin: 3rem 0;',
+              wrapperStyle: function (result) {
+                return `margin-top: 3rem; margin-bottom: 3rem;`;
+              }
             }
           }
         ]
