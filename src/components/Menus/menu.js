@@ -1,7 +1,10 @@
 import { graphql } from 'gatsby';
 import * as Utils from '../../js-utils/utils';
+import * as GatsbyConfig from '../../../gatsby-config.js';
 
 const MENU_NODE_FALLBACK_WEIGHT = 99;
+
+const pathPrefix = GatsbyConfig.pathPrefix ? GatsbyConfig.pathPrefix : false;
 
 /**
  * Creates a new Menu.
@@ -34,7 +37,13 @@ Menu.prototype.getCurrentSection = function() {
     let pathCompare = '';
     for (let i = 0; i < pathParts.length; i++) {
       pathCompare += '/' + pathParts[i];
-      if (Utils.stripSlashes(pathCompare) === Utils.stripSlashes(node.path)) {
+      // If pathPrefix is set, assume we are building with prefixes. Adjust
+      // comparison accordingly.
+      let nodePath = node.path;
+      if (pathPrefix) {
+        nodePath = pathPrefix + nodePath;
+      }
+      if (Utils.stripSlashes(pathCompare) === Utils.stripSlashes(nodePath)) {
         section.push(node);
       }
     }

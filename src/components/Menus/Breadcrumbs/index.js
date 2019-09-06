@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import * as Utils from '../../../js-utils/utils';
+import * as GatsbyConfig from '../../../../gatsby-config.js';
 import { Menu } from '../menu.js';
 import './Breadcrumbs.scss';
 
@@ -59,7 +60,11 @@ class Breadcrumbs extends React.Component {
       pathCompare += '/' + pathParts[i];
       // eslint-disable-next-line
       data.forEach(function(item) {
-        if (item.path === pathCompare) {
+        let itemPath = item.path;
+        if (GatsbyConfig.pathPrefix) {
+          itemPath = GatsbyConfig.pathPrefix + itemPath;
+        }
+        if (Utils.stripSlashes(itemPath) === Utils.stripSlashes(pathCompare)) {
           breadcrumbs.push(
             <Crumb
               title={item.title}
