@@ -11,6 +11,7 @@ exports.sourceNodes = ({ actions, schema }) => {
       keywords: String
       icon: String
       video: String
+      redirect_to: String
     }
 
     type MarkdownRemark implements Node {
@@ -20,7 +21,7 @@ exports.sourceNodes = ({ actions, schema }) => {
 }
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   return graphql(`
     {
@@ -30,6 +31,7 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               home
               path
+              redirect_to
             }
           }
         }
@@ -41,6 +43,15 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      if (node.frontmatter.redirect_to) {
+        createRedirect({
+          fromPath: node.frontmatter.path,
+          toPath: node.frontmatter.redirect_to,
+          isPermanent: true,
+          force: true,
+          redirectInBrowser: true
+        });
+      }
       if (node.frontmatter.home) {
         createPage({
           path: node.frontmatter.path,
