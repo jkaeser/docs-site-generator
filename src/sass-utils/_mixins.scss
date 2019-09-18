@@ -169,6 +169,32 @@
     }
   }
 
+  .inline {
+    display: inline;
+    margin: 0;
+
+    .gatsby-resp-image-wrapper {
+      max-width: none !important;
+      margin: 0 !important;
+    }
+
+    .gatsby-resp-image-background-image {
+      display: none !important;
+    }
+
+    a,
+    img,
+    span {
+      display: inline !important;
+    }
+
+    img {
+      height: auto;
+      width: auto;
+      position: initial;
+    }
+  }
+
   .align-left,
   .align-right {
     .gatsby-resp-image-background-image {
