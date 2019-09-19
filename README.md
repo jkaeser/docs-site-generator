@@ -59,6 +59,24 @@ Run `yarn build` from the repository root. This will generate a site into the **
 
 The generated **public/** directory is an entirely self-sufficient and portable site. You can rename it, move it, and point a web server to it.
 
+### Building with a path prefix
+1. Set an environment variable for the path prefix. E.g. with Linux:
+   ```
+   export GATSBY_PATH_PREFIX="knowledge-base"
+   ```
+   This variable is accessed by **gatsby-config.js**.
+2. Generate the site with path prefixes.
+   ```
+   gatsby build --prefix-paths
+   ```
+3. Rename the generated **public/** directory to the path prefix.
+   ```
+   mv public/ $GATSBY_PATH_PREFIX
+   ```
+4. Place this directory in the web root.
+
+https://github.com/gatsbyjs/gatsby/issues/14898#issuecomment-503567975 has some useful information about building with path prefixes.
+
 ## More Information
 
 ### Tech Stack
