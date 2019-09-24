@@ -28,7 +28,7 @@ export default class Sidebar extends React.Component {
 
   matchesPath = function(string) {
     let activeClass = '';
-    let windowPath = Utils.safeWindowPath();
+    let windowPath = Utils.stripPrefix(Utils.safeWindowPath());
 
     if (Utils.stripSlashes(windowPath) === Utils.stripSlashes(string)) {
       activeClass = 'active';

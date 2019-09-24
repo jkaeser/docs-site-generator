@@ -1,10 +1,8 @@
 import { graphql } from 'gatsby';
 import * as Utils from '../../js-utils/utils';
-import * as GatsbyConfig from '../../../gatsby-config.js';
+import { pathPrefix } from '../../../gatsby-config.js';
 
 const MENU_NODE_FALLBACK_WEIGHT = 99;
-
-const pathPrefix = GatsbyConfig.pathPrefix ? GatsbyConfig.pathPrefix : false;
 
 /**
  * Creates a new Menu.
