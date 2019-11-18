@@ -10,7 +10,7 @@ import './Landing.scss';
 
 export default class LandingPage extends React.Component {
   render() {
-    const { frontmatter } = this.props.data.pageMarkdown
+    const { frontmatter, html: body } = this.props.data.pageMarkdown
     const { siteSearchIndex } = this.props.data;
 
     return (
@@ -26,14 +26,21 @@ export default class LandingPage extends React.Component {
         </PageTitle>
         {
           frontmatter.home !== true &&
-          <div class="Landing__breadcrumb-wrapper">
-            <div class="Landing__breadcrumb">
+          <div className="Landing__breadcrumb-wrapper">
+            <div className="Landing__breadcrumb">
               <Breadcrumbs />
             </div>
           </div>
         }
         <section className="Landing__content-wrapper">
           <div className="Landing__content">
+            {
+              body !== null &&
+              <div
+                className="Landing__content-body"
+                dangerouslySetInnerHTML={{ __html: body }}
+              />
+            }
             <Grid section={frontmatter.menuSection || '/'} />
           </div>
         </section>
@@ -50,6 +57,7 @@ export const LandingPageQuery = graphql`
         menuSection
         home
       }
+      html
     }
     ...searchIndexQuery
   }
