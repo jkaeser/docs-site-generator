@@ -148,7 +148,7 @@ function _menuCreateTree(nodes) {
 
 export const dynamicMenuQuery = graphql`
   fragment dynamicMenuQuery on Query {
-    allMarkdownRemark(filter:{ frontmatter:{ home:{ ne: true} } } ) {
+    allMarkdownRemark(filter:{ frontmatter:{ template:{ ne: "landing"} } } ) {
       edges {
         node {
           id

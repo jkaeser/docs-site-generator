@@ -4,7 +4,7 @@ exports.sourceNodes = ({ actions, schema }) => {
   actions.createTypes(`
     type MarkdownRemarkFrontmatter {
       demo: Boolean
-      home: Boolean
+      template: String
       title: String
       path: String
       weight: Int
@@ -29,7 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             frontmatter {
-              home
+              template
               path
               redirect_to
             }
@@ -52,10 +52,10 @@ exports.createPages = ({ actions, graphql }) => {
           redirectInBrowser: true
         });
       }
-      if (node.frontmatter.home) {
+      if (node.frontmatter.template === 'landing') {
         createPage({
           path: node.frontmatter.path,
-          component: path.resolve(`src/templates/home/index.js`),
+          component: path.resolve(`src/templates/landing/index.js`),
           context: {}
         });
       }
