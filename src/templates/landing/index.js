@@ -20,9 +20,12 @@ export default class LandingPage extends React.Component {
         </Helmet>
         <PageTitle className="Landing__title">
           <h1>{frontmatter.title}</h1>
-          <div className="Landing__title-wrapper">
-            <Search data={siteSearchIndex} />
-          </div>
+          {
+            frontmatter.showSearch === true &&
+            <div className="Landing__title-wrapper">
+              <Search data={siteSearchIndex} />
+            </div>
+          }
         </PageTitle>
         {
           frontmatter.home !== true &&
@@ -56,6 +59,7 @@ export const LandingPageQuery = graphql`
         title
         menuSection
         home
+        showSearch
       }
       html
     }

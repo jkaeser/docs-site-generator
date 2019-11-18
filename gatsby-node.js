@@ -14,6 +14,7 @@ exports.sourceNodes = ({ actions, schema }) => {
       video: String
       redirect_to: String
       menuSection: String
+      showSearch: Boolean
     }
 
     type MarkdownRemark implements Node {
