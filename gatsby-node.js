@@ -5,6 +5,7 @@ exports.sourceNodes = ({ actions, schema }) => {
     type MarkdownRemarkFrontmatter {
       demo: Boolean
       template: String
+      home: Boolean
       title: String
       path: String
       weight: Int
@@ -12,6 +13,7 @@ exports.sourceNodes = ({ actions, schema }) => {
       icon: String
       video: String
       redirect_to: String
+      menuSection: String
     }
 
     type MarkdownRemark implements Node {

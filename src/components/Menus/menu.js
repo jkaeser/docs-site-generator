@@ -35,19 +35,35 @@ Menu.prototype.getCurrentSection = function() {
     let pathCompare = '';
     for (let i = 0; i < pathParts.length; i++) {
       pathCompare += '/' + pathParts[i];
-      // If pathPrefix is set, assume we are building with prefixes. Adjust
-      // comparison accordingly.
-      let nodePath = node.path;
-      if (pathPrefix) {
-        nodePath = pathPrefix + nodePath;
-      }
-      if (Utils.stripSlashes(pathCompare) === Utils.stripSlashes(nodePath)) {
+      if (Utils.stripSlashes(pathCompare) === Utils.stripSlashes(node.comparePath)) {
         section.push(node);
       }
     }
   });
 
   return section;
+};
+
+/**
+ * Extract the children of a given page by path.
+ * @param {string} path
+ *  The path to inspect for child pages.
+ * @return {array}
+ */
+Menu.prototype.getChildrenByPath = function(path) {
+  let children = [];
+  const self = this;
+
+  this.tree.forEach(function(node) {
+    if (path === '/') {
+      children = self.tree;
+    }
+    if (node.path === path) {
+      children = node.children;
+    }
+  });
+
+  return children;
 };
 
 /**
@@ -71,6 +87,7 @@ function _menuFormatData(data) {
   for (let i = 0; i < data.length; i++) {
     let node = data[i].node.frontmatter;
     node.id = data[i].node.id;
+    node.comparePath = pathPrefix ? '/' + pathPrefix + node.path : node.path;
     formatted.push(node);
   }
 
@@ -125,6 +142,7 @@ function _menuAddToTree(node, tree) {
   tree.push({
     title: node.title || "",
     path: node.path || "",
+    comparePath: node.comparePath || "",
     id: node.id || "",
     weight: node.weight !== null ? node.weight : MENU_NODE_FALLBACK_WEIGHT,
     icon: node.icon || null,
@@ -148,7 +166,7 @@ function _menuCreateTree(nodes) {
 
 export const dynamicMenuQuery = graphql`
   fragment dynamicMenuQuery on Query {
-    allMarkdownRemark(filter:{ frontmatter:{ template:{ ne: "landing"} } } ) {
+    allMarkdownRemark(filter:{ frontmatter:{ home:{ ne: true} } } ) {
       edges {
         node {
           id

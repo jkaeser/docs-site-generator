@@ -5,6 +5,7 @@ import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import Search from '../../components/Search';
 import Grid from '../../components/Menus/Grid';
+import Breadcrumbs from '../../components/Menus/Breadcrumbs';
 import './Landing.scss';
 
 export default class LandingPage extends React.Component {
@@ -23,9 +24,17 @@ export default class LandingPage extends React.Component {
             <Search data={siteSearchIndex} />
           </div>
         </PageTitle>
+        {
+          frontmatter.home !== true &&
+          <div class="Landing__breadcrumb-wrapper">
+            <div class="Landing__breadcrumb">
+              <Breadcrumbs />
+            </div>
+          </div>
+        }
         <section className="Landing__content-wrapper">
           <div className="Landing__content">
-            <Grid />
+            <Grid section={frontmatter.menuSection || '/'} />
           </div>
         </section>
       </Layout>
@@ -38,6 +47,8 @@ export const LandingPageQuery = graphql`
     pageMarkdown: markdownRemark(frontmatter: { path: { eq: $path } }) {
       frontmatter {
         title
+        menuSection
+        home
       }
     }
     ...searchIndexQuery
