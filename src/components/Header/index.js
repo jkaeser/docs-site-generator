@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Nav from '../Menus/Nav';
 import logo from '../../img/logo.png';
 import './Header.scss';
 
@@ -14,7 +13,6 @@ const Header = () => (
           </figure>
         </Link>
       </div>
-      <Nav />
     </div>
   </header>
 );

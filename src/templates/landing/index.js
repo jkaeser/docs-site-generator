@@ -38,7 +38,7 @@ export default class LandingPage extends React.Component {
         <section className="Landing__content-wrapper">
           <div className="Landing__content">
             {
-              body !== null &&
+              body !== '' &&
               <div
                 className="Landing__content-body"
                 dangerouslySetInnerHTML={{ __html: body }}
