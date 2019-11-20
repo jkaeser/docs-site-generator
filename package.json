@@ -48,6 +48,7 @@
     "develop": "./node_modules/.bin/gatsby develop",
     "demo": "./node_modules/.bin/gatsby build && ./node_modules/.bin/gatsby serve",
     "build": "./node_modules/.bin/gatsby build",
-    "serve": "./node_modules/.bin/gatsby serve"
+    "serve": "./node_modules/.bin/gatsby serve",
+    "buildWithPrefix": "rm -r public/ .cache/ && gatsby build --prefix-paths && mv public/ $GATSBY_PATH_PREFIX && mkdir public/ && mv $GATSBY_PATH_PREFIX public/"
   }
 }

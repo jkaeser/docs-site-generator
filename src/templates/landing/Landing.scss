@@ -1,0 +1,53 @@
+@import "../../sass-utils/globals";
+
+.Landing {
+  &__title {
+    position: relative;
+  }
+
+  &__title-wrapper {
+    @include mw($bp-768);
+
+    text-transform: none;
+    margin-top: 1.75rem;
+  }
+
+  &__subtitle {
+    font-size: $fs-medium;
+  }
+
+  &__breadcrumb-wrapper {
+    padding: 2rem 2rem 0;
+
+    @include breakpoint($bp-768) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  &__breadcrumb {
+    @include mw($site-max-width);
+  }
+
+  &__content-wrapper {
+    @include section;
+
+    background-color: $white;
+    height: 100%;
+  }
+
+  &__content-body {
+    @include wysiwyg;
+    @include mw(54rem);
+
+    color: $c-2;
+    font-size: $fs-small;
+    text-align: center;
+    padding-bottom: 3rem;
+    margin-top: -2rem;
+  }
+
+  &__content {
+    @include mw($site-max-width);
+  }
+}

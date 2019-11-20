@@ -39,6 +39,29 @@ export class GridItem extends React.Component {
 };
 
 export class Grid extends React.Component {
+  static propTypes = {
+    section: PropTypes.string,
+  };
+
+  static defaultProps = {
+    section: '/',
+  };
+
+  renderMenu = function(data) {
+    return (
+      <div className="Grid">
+        {data.map(item => (
+          <GridItem
+            key={`g-${item.id}`}
+            path={item.path}
+            title={item.title}
+            icon={item.icon}
+          />
+        ))}
+      </div>
+    )
+  };
+
   render() {
     return (
       <StaticQuery
@@ -48,16 +71,11 @@ export class Grid extends React.Component {
           }
         `}
         render={data => (
-          <div className="Grid">
-            {new Menu(data).tree.map(item => (
-              <GridItem
-                key={`g-${item.id}`}
-                path={item.path}
-                title={item.title}
-                icon={item.icon}
-              />
-            ))}
-          </div>
+          <>
+            {this.renderMenu(
+              new Menu(data).getChildrenByPath(this.props.section)
+            )}
+          </>
         )}
       />
     )
