@@ -12,7 +12,7 @@ const MENU_NODE_FALLBACK_WEIGHT = 99;
  */
 export function Menu(data) {
   this.nodes = _menuFormatData(data.allMarkdownRemark.edges);
-  this.tree = _menuCreateTree(this.nodes);
+  this.tree = this.sortTree(_menuCreateTree(this.nodes));
 };
 
 /**
@@ -41,7 +41,7 @@ Menu.prototype.getCurrentSection = function() {
     }
   });
 
-  return section;
+  return this.sortTree(section);
 };
 
 /**
@@ -58,13 +58,32 @@ Menu.prototype.getChildrenByPath = function(path) {
     if (path === '/') {
       children = self.tree;
     }
-    if (node.path === path) {
+    if (node.comparePath === path) {
       children = node.children;
     }
   });
 
-  return children;
+  return this.sortTree(children);
 };
+
+/**
+ * Recursively sort menu trees.
+ * @param {array} tree
+ *  An array of menu nodes.
+ * @return {array}
+ */
+Menu.prototype.sortTree = function(tree) {
+  const self = this;
+  _menuSortByWeight(tree);
+
+  tree.forEach(function(node) {
+    if (node.hasOwnProperty('children')) {
+      self.sortTree(node.children);
+    }
+  });
+
+  return tree;
+}
 
 /**
  * Sort menu items by path length.
