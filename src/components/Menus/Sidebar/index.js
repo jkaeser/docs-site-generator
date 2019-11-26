@@ -16,6 +16,7 @@ export default class Sidebar extends React.Component {
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
       path: PropTypes.string,
+      comparePath: PropTypes.string,
       title: PropTypes.string
     })),
   };
@@ -28,7 +29,7 @@ export default class Sidebar extends React.Component {
 
   matchesPath = function(string) {
     let activeClass = '';
-    let windowPath = Utils.stripPrefix(Utils.safeWindowPath());
+    let windowPath = Utils.safeWindowPath();
 
     if (Utils.stripSlashes(windowPath) === Utils.stripSlashes(string)) {
       activeClass = 'active';
@@ -39,7 +40,7 @@ export default class Sidebar extends React.Component {
 
   renderItem = function(item) {
     return (
-      <li key={`sb-${item.id}`} className={`Sidebar__item ${this.matchesPath(item.path)}`}>
+      <li key={`sb-${item.id}`} className={`Sidebar__item ${this.matchesPath(item.comparePath)}`}>
         <Link to={item.path}>{item.title}</Link>
 
         {item.children.length !== 0 &&

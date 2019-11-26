@@ -35,12 +35,3 @@ export function safeWindowPath() {
 export function splitPath(path) {
   return path.split('/').filter(part => part !== '')
 };
-
-/**
- * Strip the pathPrefix (if set) from a path.
- * @param {string} path
- * @return {string}
- */
-export function stripPrefix(path) {
-  return pathPrefix ? path.replace(pathPrefix + '/', '') : path;
-}

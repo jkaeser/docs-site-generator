@@ -51,13 +51,13 @@ Menu.prototype.getCurrentSection = function() {
  * @return {array}
  */
 Menu.prototype.getChildrenByPath = function(path) {
-  let children = [];
-  const self = this;
+  let children = this.tree;
+
+  if (pathPrefix) {
+    path = '/' + pathPrefix + path
+  }
 
   this.tree.forEach(function(node) {
-    if (path === '/') {
-      children = self.tree;
-    }
     if (node.comparePath === path) {
       children = node.children;
     }

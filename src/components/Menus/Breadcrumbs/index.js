@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import * as Utils from '../../../js-utils/utils';
-import * as GatsbyConfig from '../../../../gatsby-config.js';
 import { Menu } from '../menu.js';
 import './Breadcrumbs.scss';
 
@@ -13,11 +12,13 @@ class Crumb extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     path: PropTypes.string,
+    comparePath: PropTypes.string,
   };
 
   static defaultProps = {
     title: '',
     path: '',
+    comparePath: '',
   };
 
   render() {
@@ -25,7 +26,7 @@ class Crumb extends React.Component {
     let crumbtitle = this.props.title;
 
     if (
-      Utils.stripSlashes(this.props.path) !== Utils.stripSlashes(windowPath)
+      Utils.stripSlashes(this.props.comparePath) !== Utils.stripSlashes(windowPath)
     ) {
       crumbtitle = <Link to={this.props.path}>{this.props.title}</Link>;
     }
@@ -54,21 +55,19 @@ class Breadcrumbs extends React.Component {
     let pathCompare = '';
 
     // Start crumbs with link to home page.
-    let breadcrumbs = [<Crumb title="Guides" path="/" key="bc-home" />]
+    let breadcrumbs = [<Crumb title="Guides" path="/" key="bc-home" />];
 
     for (var i = 0; i < pathParts.length; i++) {
       pathCompare += '/' + pathParts[i];
       // eslint-disable-next-line
       data.forEach(function(item) {
-        let itemPath = item.path;
-        if (GatsbyConfig.pathPrefix) {
-          itemPath = GatsbyConfig.pathPrefix + itemPath;
-        }
+        let itemPath = item.comparePath;
         if (Utils.stripSlashes(itemPath) === Utils.stripSlashes(pathCompare)) {
           breadcrumbs.push(
             <Crumb
               title={item.title}
               path={item.path}
+              comparePath={item.comparePath}
               key={`bc-${item.id}`}
             />
           )
