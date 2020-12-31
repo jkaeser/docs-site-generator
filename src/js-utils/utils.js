@@ -1,5 +1,3 @@
-import { pathPrefix } from '../../gatsby-config.js';
-
 /**
  * Gets rid of leading or trailing slashes to make path comparisons easier
  * @param {string} path

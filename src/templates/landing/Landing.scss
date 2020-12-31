@@ -32,7 +32,7 @@
   &__content-wrapper {
     @include section;
 
-    background-color: $white;
+    background: var(--body-background);
     height: 100%;
   }
 
@@ -40,7 +40,7 @@
     @include wysiwyg;
     @include mw(54rem);
 
-    color: $c-2;
+    color: var(--body-color);
     font-size: $fs-small;
     text-align: center;
     padding-bottom: 3rem;

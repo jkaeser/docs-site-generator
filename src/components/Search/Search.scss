@@ -5,13 +5,30 @@
   position: relative;
   z-index: 1;
 
+  &.focused {
+    z-index: 999;
+  }
+
+  &__overlay {
+    &.focused {
+      position: fixed;
+      z-index: 998;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: $black;
+      opacity: .5;
+    }
+  }
+
   &__icon {
     @include fa-svg-fix;
 
     position: absolute;
     left: 1rem;
     top: 18px;
-    color: $grey-dark;
+    color: var(--search-color);
     font-size: $fs-medium;
   }
 
@@ -22,17 +39,13 @@
     width: 100%;
     font-size: $fs-small;
     padding: 0 1rem 0 3.5rem;
-    border: 1px solid $grey;
+    border: 1px solid var(--search-borderColor);
+    background: var(--search-backgroundColor);
     border-radius: $border-radius;
     height: 60px;
 
     &::-ms-clear {
       display: none;
-    }
-
-    &.hasQuery {
-      outline: 4px solid $c-5;
-      outline-offset: -2px;
     }
   }
 
@@ -45,7 +58,7 @@
     height: 40px;
     cursor: pointer;
     border: none;
-    background: $grey-light;
+    background: var(--search-color);
 
     &::-moz-focus-inner {
       border: 0;
@@ -66,7 +79,7 @@
       left: 4px;
       height: 20px;
       width: 20px;
-      border-right: 3px solid $grey-dark;
+      border-right: 3px solid var(--search-backgroundColor);
     }
 
     &::before {
@@ -94,7 +107,7 @@
     overflow: auto;
 
     &.hasResults {
-      border: 1px solid $grey-dark;
+      border: 1px solid var(--search-borderColor);
       border-top: none;
     }
 
@@ -105,13 +118,14 @@
 
   &__result {
     a {
-      color: $c-1;
+      color: var(--search-results-color);
       border-bottom: none;
       display: block;
-      background-color: $grey-light;
+      background: var(--search-results-backgroundOdd);
       padding: 1rem;
 
       &:hover {
+        color: var(--search-results-hover-color);
         border-bottom: none;
         text-decoration: underline;
       }
@@ -123,7 +137,7 @@
 
     &:nth-of-type(even) {
       a {
-        background-color: $white;
+        background: var(--search-results-backgroundEven);
       }
     }
   }

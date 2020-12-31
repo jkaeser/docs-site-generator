@@ -56,52 +56,62 @@ export default class Search extends React.Component {
 
     return (
       <FocusWithin>
-        {({ focusProps, isFocused }) => (
-          <div className="Search" {...focusProps}>
-            <form autoComplete="off">
-              <label htmlFor="searchInput" className="hidden">
-                Search guides
-              </label>
-              <FontAwesomeIcon
-                icon="search"
-                className="Search__icon"
-              />
-              <input
-                type="text"
-                placeholder="Search guides..."
-                name="searchInput"
-                id="search"
-                value={this.state.query}
-                onChange={this.search}
-                onKeyDown={this.handleKeydown}
-                className={`Search__input ${hasQuery}`}
-              />
-              <button
-                className={`Search__clear ${hasQuery}`}
-                onClick={this.clearSearch}
-              >
-                <span className="hidden">Clear search input</span>
-              </button>
-            </form>
-            <ul
-              className={`
-                Search__results
-                ${hasResults}
-                ${isFocused ? 'isFocused' : ''}
-              `}
-              tabIndex='-1'
-              >
-              {this.state.results.map(page => (
-                this.renderResult(page)
-              ))}
-            </ul>
-          </div>
-        )}
+        {({ focusProps, isFocused }) => {
+          const focusedClass = isFocused ? 'focused' : 'not-focused';
+
+          return (
+            <>
+            <div className={`Search ${focusedClass}`} {...focusProps}>
+              <form autoComplete="off">
+                <label htmlFor="searchInput" className="hidden">
+                  Search guides
+                </label>
+                <FontAwesomeIcon
+                  icon="search"
+                  className="Search__icon"
+                />
+                <input
+                  type="text"
+                  placeholder="Search guides..."
+                  name="searchInput"
+                  id="search"
+                  value={this.state.query}
+                  onChange={this.search}
+                  onKeyDown={this.handleKeydown}
+                  className={`Search__input ${hasQuery}`}
+                />
+                <button
+                  className={`Search__clear ${hasQuery}`}
+                  onClick={this.clearSearch}
+                >
+                  <span className="hidden">Clear search input</span>
+                </button>
+              </form>
+              <ul
+                className={`
+                  Search__results
+                  ${hasResults}
+                  ${isFocused ? 'isFocused' : ''}
+                `}
+                tabIndex='-1'
+                >
+                {this.state.results.map(page => (
+                  this.renderResult(page)
+                ))}
+              </ul>
+            </div>
+            <div
+              className={`Search__overlay ${focusedClass}`}
+              role="presentation"
+            />
+            </>
+          )
+        }}
       </FocusWithin>
     );
   };
 
-  getOrCreateIndex = function() {
+  getOrCreateIndex = () => {
     // Return index, or create an elastic lunr index and hydrate with graphql
     // query results
     return this.index ? this.index : Index.load(this.props.data.index);
@@ -123,9 +133,7 @@ export default class Search extends React.Component {
         expand: true,
       })
         // Map over each ID and return the full document
-        .map(({
-        ref,
-        }) => this.index.documentStore.getDoc(ref)),
+        .map(({ref}) => this.index.documentStore.getDoc(ref)),
     });
   };
 };

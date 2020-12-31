@@ -2,11 +2,19 @@
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 .cache/
+
 # Build directory
 public/
+
+# Configuration
+config.js
+
+# Content files
+src/pages/docs/
+
+# Auto-generated
 .DS_Store
 yarn-error.log
 .idea
 .env
 static/content-manifest.json
-src/pages/docs/

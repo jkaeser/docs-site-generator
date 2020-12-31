@@ -35,6 +35,7 @@
   line-height: 3rem;
   margin: 0;
   font-weight: 900;
+  color: var(--typography-h1-color);
 }
 
 @mixin h2 {
@@ -43,24 +44,28 @@
   line-height: 2.5rem;
   margin: 0.5rem 0;
   font-weight: 500;
+  color: var(--typography-h2-color);
 }
 
 @mixin h3 {
   font-size: $fs-large;
   font-family: $f-primary;
   font-weight: 500;
+  color: var(--typography-h3-color);
 }
 
 @mixin h4 {
   font-size: $fs-medium;
   font-family: $f-primary;
   font-weight: 400;
+  color: var(--typography-h4-color);
 }
 
 @mixin h5 {
   font-size: $fs-small;
   font-family: $f-primary;
   font-weight: 400;
+  color: var(--typography-h5-color);
 }
 
 @mixin h6 {
@@ -69,11 +74,12 @@
   color: $c-2;
   font-style: italic;
   font-weight: 400;
+  color: var(--typography-h6-color);
 }
 
 @mixin a {
   display: inline;
-  color: $c-5;
+  color: var(--typography-a-color);
   text-decoration: none;
   font-weight: 400;
   border-bottom: 1px solid transparent;
@@ -81,7 +87,8 @@
 
   &:hover,
   &:active {
-    border-color: $c-1;
+    color: var(--typography-a-hover-color);
+    border-color: var(--typography-a-hover-borderColor);
   }
 }
 
@@ -232,7 +239,7 @@
 
   code,
   pre {
-    background-color: $grey-light;
+    background: var(--typography-code-background);
     font-family: $f-tertiary;
     font-size: $fs-base;
     line-height: 1.2;
@@ -249,7 +256,7 @@
   }
 
   code {
-    color: $c-1;
+    color: var(--typography-code-color);
     padding: 0 .25rem;
   }
 
@@ -260,12 +267,12 @@
 
   blockquote {
     position: relative;
-    border-left: 4px solid $c-5;
+    border-left: 4px solid var(--typography-blockquote-borderColor);
     margin: 1rem 0 1rem 1.5rem;
     padding-left: 2rem;
     font-style: italic;
     line-height: 1.5;
-    color: $grey-dark;
+    color: var(--typography-blockquote-color);
 
     @include breakpoint($bp-540) {
       margin-left: 3rem;
@@ -283,19 +290,6 @@
   h5,
   h6 {
     margin: 2rem 0 1.2rem;
-    color: $c-1;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    color: $c-1;
-  }
-
-  h6 {
-    color: $c-2;
   }
 
   table {
@@ -308,14 +302,14 @@
 
   th {
     font-family: $f-primary;
-    color: $c-1;
+    color: var(--typography-table-header-color);
   }
 
   td {
     font-size: $fs-base;
   }
 
-  $table-border: 1px solid $c-4;
+  $table-border: 1px solid var(--typography-table-borderColor);
 
   th,
   td {
@@ -369,7 +363,7 @@
 }
 
 @mixin outline {
-  outline: 4px solid $c-5;
+  outline: 4px solid var(--ui-focus);
 }
 
 @mixin fa-svg-fix {

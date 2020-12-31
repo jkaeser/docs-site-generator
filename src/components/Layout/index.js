@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from "gatsby";
 import Helmet from 'react-helmet';
 import Header from '../Header';
@@ -7,16 +6,25 @@ import Footer from '../Footer';
 import '../../js-utils/fontawesome.js';
 import './sass/layout.scss';
 import './sass/typography.scss';
+import * as config from '../../../config.default.js';
 
+function generateColorVars(config, documentRoot, prefix = '') {
+  let keys = Object.keys(config);
+  for (let i = 0; i < keys.length; i++) {
+    let varName = `${prefix}${keys[i]}`;
+    if (typeof config[keys[i]] === 'object') {
+      generateColorVars(config[keys[i]], documentRoot, `${varName}-`);
+    }
+    else {
+      documentRoot.style.setProperty(`--${varName}`, config[keys[i]]);
+    }
+  }
+}
 
 class Layout extends React.Component {
-  static propTypes = {
-    color: PropTypes.oneOf(['0', '1', '2', '3', '4']),
-  };
-
-  static defaultProps = {
-    color: '0',
-  };
+  componentDidMount() {
+    generateColorVars(config.colors, document.documentElement);
+  }
 
   render() {
     return (
@@ -38,7 +46,7 @@ class Layout extends React.Component {
             <a href="#content-wrapper" className="skip-link">Skip to main content</a>
             <Header />
             <div id="content-wrapper" tabIndex="-1">
-              <div id="content" className={ `bg-${this.props.color}` }>
+              <div id="content">
                 { this.props.children }
               </div>
             </div>

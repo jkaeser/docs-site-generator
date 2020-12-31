@@ -15,7 +15,7 @@
 
   &__item {
     a {
-      color: $white;
+      color: var(--navigation-grid-color);
       min-height: 200px;
       padding: 1rem 2rem;
       font-family: $f-primary;
@@ -26,18 +26,18 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: $c-1-translucent;
+      background: var(--navigation-grid-background);
       margin: 0 auto;
-      border-bottom: 1px solid transparent;
       border-radius: $border-radius;
       transition: all $transition-timing $transition-curve;
       text-decoration-color: $c-5;
 
       &:focus,
       &:hover {
-        background-color: $c-1;
+        background-color: var(--navigation-grid-hover-background);
+        color: var(--navigation-grid-hover-color);
         text-decoration: underline;
-        text-decoration-color: $c-5;
+        text-decoration-color: var(--navigation-grid-hover-underlineColor);
       }
 
       @include breakpoint($bp-768) {

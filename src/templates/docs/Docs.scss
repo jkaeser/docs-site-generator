@@ -1,7 +1,7 @@
 @import "../../sass-utils/globals";
 
 .Docs {
-  background-color: $white;
+  background: var(--body-background);
   height: 100%;
 
   @include breakpoint($bp-768) {
@@ -10,7 +10,7 @@
 
   &__title {
     position: relative;
-    color: $c-1;
+    color: var(--pageTitle-color);
     margin-bottom: 1rem;
   }
 
@@ -79,7 +79,7 @@
     grid-area: c;
     font-size: $fs-smaller;
     margin: 0 2rem 2rem;
-    color: $c-2;
+    color: var(--body-color);
 
     @include breakpoint($bp-768) {
       margin: 0 0 0 4.275rem;

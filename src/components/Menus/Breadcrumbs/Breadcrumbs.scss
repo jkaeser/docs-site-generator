@@ -9,7 +9,7 @@
 .Crumb {
   font-family: $f-secondary;
   display: inline-block;
-  color: $c-1-translucent;
+  color: var(--navigation-breadcrumb-color);
   font-weight: 500;
   margin-left: .25rem;
 
@@ -19,17 +19,10 @@
     font-weight: 600;
     padding: .5rem 1rem;
     margin-bottom: .5rem;
-    color: $c-1;
-    background-color: $grey-light;
+    color: var(--navigation-breadcrumb-a-color);
+    background: var(--navigation-breadcrumb-a-background);
     border-radius: $border-radius;
-    border-bottom: 1px solid transparent;
     transition: all $transition-timing $transition-curve;
-
-    &:active,
-    &:hover {
-      border-color: transparent;
-      background-color: $grey;
-    }
 
     @include breakpoint($bp-768) {
       display: inline;
@@ -39,7 +32,7 @@
 
       &:active,
       &:hover {
-        border-color: $c-1;
+        color: var(--navigation-breadcrumb-a-hover-color);
         background-color: initial;
       }
     }

@@ -6,8 +6,8 @@
   padding: 4rem 1rem;
   margin-top: $header-height;
   text-align: center;
-  background-color: $grey-light;
-  color: $black;
+  background-color: var(--banner-background);
+  color: var(--banner-color);
 
   @include breakpoint($bp-768) {
     margin-top: 0;

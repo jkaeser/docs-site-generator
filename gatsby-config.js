@@ -1,17 +1,16 @@
-const siteUrl = `https://example.com`;
-const pathPrefix = process.env.GATSBY_PATH_PREFIX ? process.env.GATSBY_PATH_PREFIX : false;
+const config = require('./config.default.js')
 
 module.exports = {
   siteMetadata: {
-    title: `Documentation Site`,
-    siteUrl: siteUrl
+    title: config.site.title,
+    siteUrl: config.site.url
   },
-  pathPrefix: pathPrefix,
+  pathPrefix: config.site.pathPrefix,
   plugins: [
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: siteUrl,
+        siteUrl: config.site.url,
       },
     },
     `gatsby-plugin-react-helmet`,

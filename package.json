@@ -11,7 +11,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.3.0",
     "breakpoint-sass": "^2.7.1",
-    "classnames": "^2.2.5",
+    "deepmerge": "^4.2.2",
     "fbjs": "^1.0.0",
     "gatsby": "^2.0.72",
     "gatsby-plugin-canonical-urls": "^2.0.8",

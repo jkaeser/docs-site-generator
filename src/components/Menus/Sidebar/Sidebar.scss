@@ -2,16 +2,16 @@
 
 .Sidebar {
   border-radius: $border-radius;
-  background: $grey-light;
+  background: var(--navigation-sidebar-background);
 
   &__intro {
     position: relative;
-    color: $white;
+    color: var(--navigation-sidebar-header-color);
     font-family: $f-secondary;
     letter-spacing: 1.2px;
     font-weight: 600;
     padding: .5rem 1rem;
-    background: $c-1-translucent;
+    background: var(--navigation-sidebar-header-background);
     border-radius: $border-radius;
 
     @include breakpoint($bp-768) {
@@ -27,7 +27,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    color: $white;
+    color: var(--navigation-sidebar-header-color);
     background: transparent;
     cursor: pointer;
     border: none;
@@ -36,10 +36,6 @@
 
     @include breakpoint($bp-768) {
       display: none;
-    }
-
-    &:focus {
-      color: $c-5;
     }
 
     > svg {
@@ -93,8 +89,9 @@
       display: inline-block;
       font-size: $fs-tiny;
       font-weight: 400;
-      color: $c-1;
+      color: var(--typography-a-color);
       padding: .5rem 0;
+      color: var(--navigation-sidebar-color);
 
       @include breakpoint($bp-540) {
         padding: .25rem 0;
@@ -103,6 +100,11 @@
       @include breakpoint($bp-768) {
         display: inline;
         padding: 0;
+      }
+
+      &:hover {
+        color: var(--navigation-sidebar-hover-color);
+        border-color: var(--navigation-sidebar-hover-borderColor);
       }
     }
 
@@ -126,7 +128,6 @@
 
     &.active > a {
       font-weight: 700;
-      color: $c-1;
       border-bottom: none;
     }
   }

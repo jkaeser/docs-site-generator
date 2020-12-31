@@ -38,8 +38,6 @@ export default class DocsPage extends React.Component {
     const { siteSearchIndex, site } = this.props.data
     const description = this.state.description
 
-    console.log(site);
-
     return (
       <Layout>
         <Helmet title={`${frontmatter.title} | ${site.siteMetadata.title}`}>
