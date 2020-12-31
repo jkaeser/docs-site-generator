@@ -29,14 +29,9 @@
   }
 
   &__logo {
-    width: 125px;
-
-    @include breakpoint($bp-768) {
-      width: 170px;
-    }
-
     a {
-      display: block;
+      display: flex;
+      align-items: center;
       border-bottom: 1px solid transparent;
 
       &:hover {
@@ -50,7 +45,23 @@
     }
   }
 
-  figure {
+  &__logo-figure {
     margin: 0;
+    width: 25px;
+
+    @include breakpoint($bp-768) {
+      width: 50px;
+    }
+  }
+
+  &__logo-title {
+    color: $white;
+    font-size: 1.25rem;
+    padding-left: .5rem;
+
+    @include breakpoint($bp-768) {
+      font-size: 2rem;
+      padding-left: .75rem;
+    }
   }
 }

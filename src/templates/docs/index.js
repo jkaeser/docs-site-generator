@@ -35,12 +35,14 @@ export default class DocsPage extends React.Component {
 
   render() {
     const { frontmatter, html: body } = this.props.data.pageMarkdown
-    const { siteSearchIndex } = this.props.data
+    const { siteSearchIndex, site } = this.props.data
     const description = this.state.description
+
+    console.log(site);
 
     return (
       <Layout>
-        <Helmet title={`${frontmatter.title} | Chainalysis Documentation`}>
+        <Helmet title={`${frontmatter.title} | ${site.siteMetadata.title}`}>
           <meta name="description" content={description} />
         </Helmet>
         <div className="Docs">
@@ -82,6 +84,11 @@ export const docsPageQuery = graphql`
         video
       }
       html
+    }
+    site {
+      siteMetadata {
+        title
+      }
     }
     ...searchIndexQuery
   }

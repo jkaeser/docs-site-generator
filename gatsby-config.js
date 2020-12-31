@@ -1,9 +1,9 @@
-const siteUrl = `https://docs.chainalysis.com`;
+const siteUrl = `https://example.com`;
 const pathPrefix = process.env.GATSBY_PATH_PREFIX ? process.env.GATSBY_PATH_PREFIX : false;
 
 module.exports = {
   siteMetadata: {
-    title: `Chainalysis Documentation`,
+    title: `Documentation Site`,
     siteUrl: siteUrl
   },
   pathPrefix: pathPrefix,

@@ -1,5 +1,5 @@
 {
-  "name": "chainalysis-documentation",
+  "name": "docs-site-generator",
   "description": "Documentation website generator.",
   "version": "0.1.0",
   "author": "John Kaeser <jkaeser@zivtech.com>",

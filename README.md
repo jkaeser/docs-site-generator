@@ -1,4 +1,4 @@
-# Chainalysis Docs Site Generator
+# Docs Site Generator
 
 - [Overview](#overview)
 - [Installing Dependencies](#installing-dependencies)
@@ -17,7 +17,7 @@
 
 ## Overview
 
-Chainalysis documentation sites are built with a combination of this Gatsby website framework and various content repositories. This guide will refer to the Gatsby framework as the **site generator**.
+Documentation sites are built with a combination of this Gatsby website framework and various content repositories. This guide will refer to the Gatsby framework as the **site generator**.
 
 The high level idea is that the site generator consumes arbitrary content from the content repositories, digests it, and returns a fully functional static website.
 
